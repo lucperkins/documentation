@@ -1,2 +1,5 @@
 baseURL: /
+title: Jaeger
 theme: jaeger-docs
+publishDir: docs
+languageCode: en-us
