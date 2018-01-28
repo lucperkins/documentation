@@ -2,4 +2,4 @@
 title: Getting started
 ---
 
-Here is a guide to getting started.
+Here is a guide to getting started, yo.

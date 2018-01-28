@@ -18,8 +18,15 @@ build:
 build-assets:
 	(cd themes/jaeger-docs && $(GULP) build)
 
-develop-content:
-	ENV=dev hugo serve
+develop-content: build-assets
+	hugo serve
 
 develop-assets:
 	(cd themes/jaeger-docs && $(GULP) dev)
+
+develop-assets-and-content:
+	make develop-assets
+	PID1=$!
+	ENV=dev hugo serve)
+	PID2=$!
+	wait $(PID1) $(PID2)
