@@ -1,0 +1,11 @@
+{{ define "title" }}
+{{ .Title }}
+{{ end }}
+
+{{ define "main" }}
+<ul>
+  {{ range .Data.Page }}
+  <li>{{ .Title }}</li>
+  {{ end }}
+</ul>
+{{ end }}

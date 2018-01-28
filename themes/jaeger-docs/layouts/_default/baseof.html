@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
     <link rel="stylesheet" href="/css/{{ index .Site.Data.css "style.css" }}">
   </head>
   <body>
