@@ -1,8 +1,16 @@
+{{- if eq (getenv "ENV") "dev" }}
+{{- $cssFile := index .Site.Data.css "style.css" }}
+{{- else }}
+{{- $cssFile := "style.css" }}
+{{- end }}
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode }}">
-  <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+<html>
+  <head>
+    <link rel="stylesheet" href="/css/{{ index .Site.Data.css "style.css" }}">
+  </head>
   <body>
     {{ block "main" . }}
+    <h1>BASE TEMPLATE</h1>
     {{ end }}
   </body>
 </html>
