@@ -1,19 +1,10 @@
-<!-- {{- if eq (getenv "ENV") "dev" }}
-{{- $cssFile := index .Site.Data.css "style.css" }}
-{{- $jsFile := index .Site.Data.js "app.js" }}
-{{- else }}
-{{- $cssFile := "style.css" }}
-{{- $jsFile := "app.js" }}
-{{- end }}
--->
 {{- $inDevEnvironment := eq (getenv "ENV") "dev" }}
-{{- $cssFile := (cond $inDevEnvironment (index .Site.Data.css "style.css") "style.css") }}
 {{- $jsFile := (cond $inDevEnvironment (index .Site.Data.js "app.js") "app.js") }}
 <!DOCTYPE html>
 <html>
   <head>
     <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
-    <link rel="stylesheet" href="/css/{{ $cssFile }}">
+    {{ partial "css.html" . }}
   </head>
   <body>
     {{ block "main" . }}
