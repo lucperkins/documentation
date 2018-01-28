@@ -8,3 +8,6 @@ build:
 
 develop-content:
 	hugo serve
+
+develop-assets:
+	(cd themes/jaeger-docs)
