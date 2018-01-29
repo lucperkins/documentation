@@ -7,8 +7,9 @@
     {{ partial "css.html" . }}
   </head>
   <body>
+    {{ partial "navbar.html" . }}
+
     {{ block "main" . }}
-    <h1>BASE TEMPLATE</h1>
     {{ end }}
 
     <script src="/js/{{ $jsFile }}"></script>
