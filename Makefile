@@ -19,7 +19,7 @@ build-assets:
 	(cd $(THEME_DIR) && $(GULP) build)
 
 develop-content: build-assets
-	hugo serve --ignoreCache --disableFastRender
+	ENV=dev hugo serve --ignoreCache --disableFastRender
 
 develop-assets:
 	(cd $(THEME_DIR) && $(GULP) dev)

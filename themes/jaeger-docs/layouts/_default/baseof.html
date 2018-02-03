@@ -6,10 +6,14 @@
     <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
     {{ partial "css.html" . }}
   </head>
-  <body>
-    {{ partial "navbar.html" . }}
-    {{ block "main" . }}
-    {{ end }}
+  <body class="body">
+    <main class="main">
+      {{ partial "navbar.html" . }}
+      {{ block "main" . }}
+      {{ end }}
+    </main>
+
+    {{ partial "footer.html" . }}
 
     <script src="/js/{{ $jsFile }}"></script>
   </body>
