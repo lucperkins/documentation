@@ -3,3 +3,5 @@ items:
   url: /docs/getting-started
 - name: Docs
   url: /docs
+- name: Blog
+  url: /blog
