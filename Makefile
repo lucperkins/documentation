@@ -16,14 +16,10 @@ build:
 	hugo
 
 build-assets:
-	(cd themes/jaeger-docs && $(GULP) build)
+	(cd $(THEME_DIR) && $(GULP) build)
 
 develop-content: build-assets
-	hugo serve
+	hugo serve --ignoreCache --disableFastRender
 
 develop-assets:
-	(cd themes/jaeger-docs && $(GULP) dev)
-
-develop-assets-and-content:
-	trap "make develop-assets" EXIT
-	ENV=dev hugo serve
+	(cd $(THEME_DIR) && $(GULP) dev)
