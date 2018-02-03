@@ -1,5 +1,6 @@
 ---
-title: Feature release
+title: Brand new feature release!
+categories: ["announcements"]
 tags: ["feature", "release"]
 ---
 

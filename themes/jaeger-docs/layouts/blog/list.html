@@ -13,6 +13,13 @@ Jaeger blog
   <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
   {{- end }}
   <hr />
+  <h2>Categories</h2>
+  <ul>
+      {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+      <li><a href="{{ "/categories/" | relLangURL }}{{ $name | urlize }}">{{ $name }}</a></li>
+      {{ end }}
+  </ul>
+
   <h2>Tags</h2>
   <ul>
     {{ range $name, $taxonomy := .Site.Taxonomies.tags }}

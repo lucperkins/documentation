@@ -5,7 +5,6 @@ Jaeger blog &mdash; {{ .Title }}
 {{ define "main" }}
 <div class="container">
   <h2>{{ .Title }}</h2>
-  <h5>Tags</h5>
   {{ range $.Params.tags }}
   <a href="/tags/{{ . }}">
     <span class="badge badge-secondary">{{ . }}</span>

@@ -1,0 +1,10 @@
+{{ define "main" }}
+<div class="container">
+  <h2>Relevant pages for the {{ .Data.Singular }} <strong>{{ .Data.Term }}</strong></h2>
+  <ul>
+    {{ range .Data.Pages }}
+    <li><a href="{{ .Permalink }}">{{ .Title }}</a> ({{ .Type }})</li>
+    {{ end }}
+  </ul>
+</div>
+{{ end }}
