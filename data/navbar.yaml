@@ -1,7 +1,9 @@
 items:
-- name: Getting started
-  url: /docs/getting-started
 - name: Docs
   url: /docs
+- name: Download
+  url: /download
+- name: Community
+  url: /community
 - name: Blog
   url: /blog

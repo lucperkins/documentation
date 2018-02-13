@@ -1,6 +1,16 @@
 {{ define "main" }}
 <div class="container">
-  <h1>{{ .Site.Title }}</h1>
-  {{ .Content }}
+  <h1>{{ .Site.Data.indexpage.hero }}</h1>
+  <p>{{ .Site.Data.indexpage.description }}</p>
+  <button class="button">Get started</button><button class="button">Download</button>
+  <hr />
+  <h2>Why Jaeger?</h2>
+  <p>Learn more about our features:</p>
+
+  <div class="container">
+    <div class="row">
+
+    </div>
+  </div>
 </div>
 {{ end }}
