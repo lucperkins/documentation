@@ -1,4 +1,5 @@
 HUGO_VERSION := 0.32.4
+FIREBASE     := node_modules/.bin/firebase
 GULP         := node_modules/.bin/gulp
 HUGO_THEME   := jaeger-docs
 THEME_DIR    := themes/$(HUGO_THEME)
@@ -23,3 +24,9 @@ develop-content: build-assets
 
 develop-assets:
 	(cd $(THEME_DIR) && $(GULP) dev)
+
+deploy:
+	$(FIREBASE) deploy \
+		--only hosting \
+		--token $(FIREBASE_TOKEN) \
+		--project jaeger-website-530ef
