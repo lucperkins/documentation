@@ -1,5 +1,6 @@
 HUGO_VERSION := 0.32.4
 FIREBASE     := node_modules/.bin/firebase
+FIREBASE_PROJECT := jaeger-docs
 GULP         := node_modules/.bin/gulp
 HUGO_THEME   := jaeger-docs
 THEME_DIR    := themes/$(HUGO_THEME)
@@ -29,4 +30,7 @@ deploy:
 	$(FIREBASE) deploy \
 		--only hosting \
 		--token $(FIREBASE_TOKEN) \
-		--project jaeger-website-530ef
+		--project $(FIREBASE_PROJECT)
+
+open-site:
+	open https://$(FIREBASE_PROJECT).firebaseapp.com
