@@ -1,0 +1,16 @@
+machine:
+  node:
+    version: 8.1.0
+  timezone: America/Los_Angeles
+dependencies:
+  pre:
+    - yarn install
+  cache:
+    cache_directories:
+      - cache_directories
+test: make build
+deployment:
+  production:
+    branch: master
+    commands:
+      - make deploy
