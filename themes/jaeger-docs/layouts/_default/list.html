@@ -3,9 +3,11 @@
 {{ end }}
 
 {{ define "main" }}
-<ul>
-  {{ range .Data.Page }}
-  <li>{{ .Title }}</li>
-  {{ end }}
-</ul>
+<div class="container">
+  <ul>
+    {{ range .Data.Page }}
+    <li>{{ .Title }}</li>
+    {{ end }}
+  </ul>
+</div>
 {{ end }}
