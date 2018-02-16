@@ -5,12 +5,12 @@ Jaeger documentation
 {{ define "main" }}
 <div class="container">
   <h1>Jaeger documentation</h1>
-  <hr />
-  {{ .Content }}
-  <hr />
   <p>The following documents are available:</p>
   {{- range .Data.Pages }}
   <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
   {{- end }}
+  <hr />
+  {{ .Content }}
+  <hr />
 </div>
 {{ end }}
