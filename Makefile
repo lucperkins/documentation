@@ -1,4 +1,4 @@
-HUGO_VERSION := 0.32.4
+HUGO_VERSION := 0.36
 FIREBASE     := node_modules/.bin/firebase
 FIREBASE_PROJECT := jaeger-docs
 GULP         := node_modules/.bin/gulp
@@ -20,6 +20,9 @@ build: build-assets
 
 build-assets:
 	(cd $(THEME_DIR) && $(GULP) build)
+
+circleci-setup:
+	./scripts/hugo-install.sh $(HUGO_VERSION) Linux
 
 develop-content: build-assets
 	ENV=dev $(HUGO) server --ignoreCache --disableFastRender

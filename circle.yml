@@ -8,6 +8,8 @@ dependencies:
   cache:
     cache_directories:
       - cache_directories
+  override:
+    - make circleci-setup
 test: make build
 deployment:
   production:
