@@ -8,9 +8,13 @@
   <p>Learn more about our features:</p>
 
   <div class="container">
-    <div class="row">
-
-    </div>
+    <ul>
+      {{- range .Site.Data.indexpage.features -}}
+      <li>{{ . }}</li>
+      {{- end -}}
+    </ul>
+    <h3>We are a Cloud Native Computing Foundation member project</h3>
+    <img src="/img/cncf-logo.png">
   </div>
 </div>
 {{ end }}
