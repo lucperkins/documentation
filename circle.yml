@@ -3,11 +3,9 @@ machine:
     version: 8.1.0
   timezone: America/Los_Angeles
 dependencies:
-  pre:
-    - yarn install
   cache:
     cache_directories:
-      - cache_directories
+      - ~/.cache/yarn
   override:
     - make circleci-setup
 test: make build
