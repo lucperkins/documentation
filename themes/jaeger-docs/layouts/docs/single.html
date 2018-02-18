@@ -5,15 +5,22 @@ Jaeger documentation &mdash; {{ .Title }}
 {{- define "main" -}}
 {{- $githubUrl := (printf "https://github.com/jaegertracing/documentation/tree/master/content/%s" .File.Path) -}}
 <div class="container">
-  <h2>{{ .Title }}</h2>
-  {{ range $.Params.tags }}
-  <a href="/tags/{{ . }}">
-    <span class="badge badge-pill badge-success">{{ . }}</span>
-  </a>
-  {{ end }}
-  <hr />
-  {{ .Content }}
-  <hr />
-  <h6>To edit this page, click <a href="{{ $githubUrl }}">here</a>.</h6>
+  <div class="row">
+    <div class="col-3">
+      {{ partial "sidebar.html" . }}
+    </div>
+    <div class="col-9">
+      <h2>{{ .Title }}</h2>
+      {{ range $.Params.tags }}
+      <a href="/tags/{{ . }}">
+        <span class="badge badge-pill badge-success">{{ . }}</span>
+      </a>
+      {{ end }}
+      <hr />
+      {{ .Content }}
+      <hr />
+      <h6>To edit this page, click <a href="{{ $githubUrl }}">here</a>.</h6>
+    </div>
+  </div>
 </div>
 {{- end -}}

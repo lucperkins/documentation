@@ -1,0 +1,5 @@
+{{- range where .Site.Pages "Section" "docs" -}}
+  {{- if ne .Title "Jaeger, a distributed tracing system" -}}
+  {{- .Render "link" }}
+  {{- end -}}
+{{- end -}}
