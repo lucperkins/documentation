@@ -22,7 +22,7 @@ build-assets:
 	(cd $(THEME_DIR) && $(GULP) build)
 
 circleci-setup: assets-dev-setup
-	./scripts/hugo-install.sh $(HUGO_VERSION) Linux
+	./scripts/setup.sh $(HUGO_VERSION) Linux
 
 develop-content: build-assets
 	ENV=dev $(HUGO) server --ignoreCache --disableFastRender
