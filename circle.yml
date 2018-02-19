@@ -11,6 +11,6 @@ dependencies:
 test: make build
 deployment:
   production:
-    branch: master
+    branch: lperkins/boilerplate
     commands:
       - make deploy
