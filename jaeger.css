@@ -1,18 +1,18 @@
-@import "syntax"
+.banner {
+  width:100%;
+  background-image:url('https://github.com/alexcontini/alexcontini.github.io/blob/master/bg3.jpg?raw=true');
+}
 
-.banner
-  width: 100%
-  background-image: url('https://github.com/alexcontini/alexcontini.github.io/blob/master/bg3.jpg?raw=true')
+.banner img {
+  width:60%;
+}
 
-  img
-    width: 60%
-
-.bannertext
-  width: 60%
-  position: relative
-  z-index: 99
-  font-size: 16pt
-  font-family: 'Proxima Nova'
+.bannertext{
+  width:60%;
+  position:relative;
+  z-index:99;
+  font-size:16pt;
+  font-family:'Proxima Nova';
   font-weight:300;
   text-align:center;
   padding-top:12%;
@@ -20,7 +20,7 @@
   line-height:24pt;
   color:white;
   margin: 0 auto;
-
+}
 
 .bannertextheader {
   width:80%;

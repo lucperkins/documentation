@@ -1,5 +1,3 @@
-{{- $inDevEnvironment := eq (getenv "ENV") "dev" }}
-{{- $jsFile := (cond $inDevEnvironment (index .Site.Data.js "app.js") "app.js") }}
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
   <head>
@@ -7,14 +5,11 @@
     {{ partial "css.html" . }}
   </head>
   <body class="body">
-    <main class="main" style="margin-top: 100px;">
+    <main class="main">
       {{ partial "navbar.html" . }}
+
       {{ block "main" . }}
       {{ end }}
     </main>
-
-    {{ partial "footer.html" . }}
-
-    <script src="/js/{{ $jsFile }}"></script>
   </body>
 </html>

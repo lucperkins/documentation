@@ -13,7 +13,7 @@ hugo-install-macos:
 content-edit-setup: hugo-install-macos
 
 assets-dev-setup:
-	(cd $(THEME_DIR) && $(YARN))
+	(cd $(THEME_DIR) && $(YARN) && npm rebuild node-sass --force)
 
 build: build-assets
 	$(HUGO) -v

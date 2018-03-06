@@ -1,3 +1,4 @@
-{{- $inDevEnvironment := eq (getenv "ENV") "dev" }}
-{{- $cssFile := (cond $inDevEnvironment (index .Site.Data.css "style.css") "style.css") }}
-<link rel="stylesheet" href="/css/{{ $cssFile }}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Proxima+Nova">
+<link rel="stylesheet" href="https://use.typekit.net/qui7ysk.css">
+<link rel="stylesheet"href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="/css/jaeger.css">
