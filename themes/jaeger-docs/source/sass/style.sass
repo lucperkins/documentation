@@ -3,6 +3,8 @@
 $font-family-base: 'Proxima Nova', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
 
 $primary: #7dcee1
+$light: #fff
+$dark: #293349
 
 @import ../../node_modules/bootstrap/scss/bootstrap
 @import "syntax"
@@ -27,10 +29,24 @@ $navbar-logo-height-mobile: 70px
     background-position: center
     background-repeat: no-repeat
 
+    .container
+      margin-top: 2%
+      margin-bottom: 2%
+
+  .lead
+    font-size: 1.5rem
+
   &.jumbotron--cncf
     img
-      width: 30%
+      max-width: 50%
 
+    p.lead
+      font-size: 2rem
+
+.section
+  &.section--features
+    p.lead
+      font-size: 2rem
 
 @media (max-width: 768px)
   .navbar
