@@ -33,7 +33,7 @@ gulp.task('js-dev', (done) => {
     .pipe(concat('app.js'))
     .pipe(hash())
     .pipe(gulp.dest(DIST.js))
-    .pipe(hash.manifest('js.json'))
+    .pipe(hash.manifest('assetHashes.json'))
     .pipe(gulp.dest('data'));
 
   done();
@@ -65,7 +65,7 @@ gulp.task('sass-dev', (done) => {
     }))
     .pipe(hash())
     .pipe(gulp.dest(DIST.css))
-    .pipe(hash.manifest('css.json'))
+    .pipe(hash.manifest('assetHashes.json'))
     .pipe(gulp.dest('data'));
 
   done();
