@@ -5,6 +5,7 @@ languageCode: en-us
 pygmentsCodeFences: true
 
 params:
+  description: Jaeger, inspired by Dapper and OpenZipkin, is a distributed tracing system released as open source by Uber Technologies. It can be used for monitoring microservice-based architectures.
   navbar:
     links:
     - title: Docs
