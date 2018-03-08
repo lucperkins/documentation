@@ -1,14 +1,16 @@
 machine:
   node:
     version: 8.1.0
-  timezone: America/Los_Angeles
+  timezone:
+    America/Los_Angeles
 dependencies:
   cache:
     cache_directories:
       - ~/.cache/yarn
   override:
     - make circleci-setup
-test: make build
+test:
+  - make build
 deployment:
   production:
     branch: lperkins/boilerplate
