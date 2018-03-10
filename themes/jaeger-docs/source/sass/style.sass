@@ -1,53 +1,26 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons|Proxima+Nova")
 
-$font-family-base: 'Proxima Nova', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+$family-sans-serif: "Proxima Nova", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !default
+$navbar-height: 5rem
 
 $primary: #7dcee1
-$light: #fff
 $dark: #293349
+$footer-background-color: $dark
 
-@import ../../node_modules/bootstrap/scss/bootstrap
+@import ../../node_modules/bulma/bulma
 @import "syntax"
 
-$navbar-logo-height: 100px
-$navbar-logo-height-mobile: 70px
+body.body
+  display: flex
+  min-height: 100vh
+  flex-direction: column
 
-.navbar
-  padding: 0 5%
+  main.main
+    flex: 1
 
-  .navbar-brand img
-    height: $navbar-logo-height
-    margin: 2.5% 0
-  .nav-item .nav-link
-    font-size: 1.5rem
-
-.jumbotron
-  &.jumbotron--main
-    background-image: url('/img/bg3.jpg')
+.hero
+  &.hero--home
+    background-image: url("/img/bg3.jpg")
+    background-repeat: no-repeat
     background-size: cover
     background-position: center
-    background-repeat: no-repeat
-
-    .container
-      margin-top: 2%
-      margin-bottom: 2%
-
-  .lead
-    font-size: 1.5rem
-
-  &.jumbotron--cncf
-    img
-      max-width: 50%
-
-    p.lead
-      font-size: 2rem
-
-.section
-  &.section--features
-    p.lead
-      font-size: 2rem
-
-@media (max-width: 768px)
-  .navbar
-    .navbar-brand img
-      height: $navbar-logo-height-mobile
