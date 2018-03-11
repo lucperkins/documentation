@@ -1,11 +1,32 @@
 {{ define "main" }}
+{{- $repoJson := getJSON "https://api.github.com/repos/jaegertracing/jaeger" }}
+{{- $watchers := index $repoJson "subscribers_count" }}
+{{- $stars := index $repoJson "watchers_count" }}
+{{- $forks := index $repoJson "forks_count" }}
+
 {{ partial "home/hero.html" . }}
 <section class="section">
-  <div class="container has-text-centered">
-    <h1 class="title is-size-1 has-text-primary is-spaced">Why Jaeger?</h1>
-    <h4 class="subtitle is-size-4">
-
-    </h4>
+  <div class="container">
+    <nav class="level">
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Watchers</p>
+          <p class="title">{{ $watchers }}</p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Stars</p>
+          <p class="title">{{ $stars }}</p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Forks</p>
+          <p class="title">{{ $forks }}</p>
+        </div>
+      </div>
+    </nav>
   </div>
 </section>
 {{ end }}

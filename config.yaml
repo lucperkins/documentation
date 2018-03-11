@@ -16,3 +16,5 @@ params:
       url: /community
     - title: Blog
       url: /blog
+  githubRepo: jaegertracing/jaeger
+  twitterHandle: JaegerTracing
