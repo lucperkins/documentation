@@ -39,8 +39,24 @@ body.body
     background-size: cover
     background-position: center
 
+.navbar
+  border-bottom: 1px solid $white-ter
+
+.section--features
+  .icon
+    margin-bottom: 3rem
+
+  .section
+    margin-top: 1%
+
+.section--github
+  background-color: $black
+
+  .heading, .title
+    color: $white
+
 .section--cncf
-  background-color: $grey-lighter
+  background-color: $white-ter
 
 .navbar
   .navbar-menu
@@ -52,7 +68,11 @@ body.body
     img
       width: 70%
 
-+tablet
+  .section--features
+    .column + .column
+      margin-top: 1.25rem
+
++touch
   .section--cncf
     img
       width: 60%
