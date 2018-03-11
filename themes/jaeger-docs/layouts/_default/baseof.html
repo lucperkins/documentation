@@ -16,6 +16,13 @@
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <script type="text/javascript">
+      const navbarOffset = -1 * (document.querySelector("nav.navbar").offsetHeight + 15);
+      var shiftWindow = function() { scrollBy(0, navbarOffset) };
+      window.addEventListener("hashchange", shiftWindow);
+      window.addEventListener("pageshow", shiftWindow);
+      function load() { if (window.location.hash) shiftWindow(); }
+
+
       document.addEventListener('DOMContentLoaded', function () {
 
       // Get all "navbar-burger" elements
