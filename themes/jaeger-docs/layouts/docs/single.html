@@ -4,6 +4,26 @@ Jaeger documentation &mdash; {{ .Title }}
 
 {{- define "main" -}}
 {{- $githubUrl := (printf "https://github.com/%s/tree/master/content/%s" .Site.Params.githubRepo .File.Path) -}}
+<section class="hero hero--docs is-info">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title{{ if .Params.description }} is-spaced{{ end }}">
+        {{ .Title }}
+      </h1>
+      {{- with .Params.description }}
+      <h2 class="subtitle">
+        {{ . }}
+      </h2>
+      {{- end }}
+      {{ range $.Params.tags }}
+      <a href="/tags/{{ . }}">
+        <span>{{ . }}</span>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
 <article class="article article--docs">
   <div class="container">
     <div class="columns">
@@ -11,15 +31,7 @@ Jaeger documentation &mdash; {{ .Title }}
         {{ partial "sidebar.html" . }}
       </div>
 
-      <div class="column is-8 is">
-        <h2>{{ .Title }}</h2>
-        {{ range $.Params.tags }}
-        <a href="/tags/{{ . }}">
-          <span>{{ . }}</span>
-        </a>
-        {{ end }}
-        <hr />
-
+      <div class="column is-8">
         <section class="content">
           {{ .Content }}
         </section>
