@@ -3,24 +3,43 @@ Jaeger documentation &mdash; {{ .Title }}
 {{- end -}}
 
 {{- define "main" -}}
-{{- $githubUrl := (printf "https://github.com/jaegertracing/documentation/tree/master/content/%s" .File.Path) -}}
-<div class="container">
-  <div class="row">
-    <div class="col-3">
-      {{ partial "sidebar.html" . }}
-    </div>
-    <div class="col-9">
-      <h2>{{ .Title }}</h2>
-      {{ range $.Params.tags }}
-      <a href="/tags/{{ . }}">
-        <span class="badge badge-pill badge-success">{{ . }}</span>
-      </a>
-      {{ end }}
-      <hr />
-      {{ .Content }}
-      <hr />
-      <h6>To edit this page, click <a href="{{ $githubUrl }}">here</a>.</h6>
+{{- $githubUrl := (printf "https://github.com/%s/tree/master/content/%s" .Site.Params.githubRepo .File.Path) -}}
+<article class="article article--docs">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-2 is-hidden-touch">
+        {{ partial "sidebar.html" . }}
+      </div>
+
+      <div class="column is-8 is">
+        <h2>{{ .Title }}</h2>
+        {{ range $.Params.tags }}
+        <a href="/tags/{{ . }}">
+          <span>{{ . }}</span>
+        </a>
+        {{ end }}
+        <hr />
+
+        <section class="content">
+          {{ .Content }}
+        </section>
+
+        <hr />
+      </div>
+
+      <div class="column is-2 is-hidden-touch">
+        <aside class="toc">
+          {{ .TableOfContents }}
+
+          <a class="button is-small is-shadowless">
+            <span class="icon is-medium">
+              <i class="fab fa-github"></i>
+            </span>
+            <span>Edit this page</span>
+          </a>
+        </aside>
+      </div>
     </div>
   </div>
-</div>
+</article>
 {{- end -}}
