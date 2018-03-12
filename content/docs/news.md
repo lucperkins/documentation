@@ -26,7 +26,7 @@ News coverage:
 # Introducing Jaeger
 **2017-04-14**
 
-<img align="right" src="../images/jaeger-vector.svg" width=400>
+<img align="right" src="/img/jaeger-vector.svg" width=400>
 Uber is pleased to announce the open source release of Jaeger, a distributed tracing system, used to monitor, profile, and troubleshoot microservices.
 
 Jaeger is written in Go, with OpenTracing compatible client libraries in [Go](https://github.com/jaegertracing/jaeger-client-go), [Java](https://github.com/jaegertracing/jaeger-client-java), [Node](https://github.com/jaegertracing/jaeger-client-node), and [Python](https://github.com/jaegertracing/jaeger-client-python). It allows service owners to instrument their services to get insights into what their architecture is doing.
