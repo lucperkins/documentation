@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "anchor-js": "^4.1.0",
     "bulma": "^0.6.2",
     "del": "^3.0.0",
     "gulp": "gulpjs/gulp#4.0",

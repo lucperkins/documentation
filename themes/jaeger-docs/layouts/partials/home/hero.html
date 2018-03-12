@@ -5,8 +5,8 @@
         {{ .Site.Title }}
       </h1>
 
-      <p class="subtitle is-size-5 is-size-6-mobile">
-        {{ .Site.Params.description }}
+      <p class="subtitle hero--subtitle is-size-5 is-size-6-mobile">
+        {{ .Site.Params.description | markdownify }}
       </p>
 
       <div class="container">

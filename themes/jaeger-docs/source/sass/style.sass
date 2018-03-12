@@ -34,6 +34,9 @@ body.body
     background-size: cover
     background-position: center
 
+  &.hero--home
+    .hero--subtitle a
+      color: $primary !important
 
 .navbar
   border-bottom: 1px solid $white-ter
@@ -74,10 +77,11 @@ body.body
 
 aside.toc
   position: fixed
+  padding-left: 1rem
 
   #TableOfContents
     border-left: 3px solid $primary
-    padding-left: 5%
+    padding-left: 1rem
 
     a
       color: $black
@@ -88,10 +92,10 @@ aside.toc
           li
             ul
               li
-                padding-left: 10%
+                padding-left: 1.5rem
                 ul
                   li
-                    padding-left: 15%
+                    padding-left: 2rem
 
   .button
     margin-top: 2rem
