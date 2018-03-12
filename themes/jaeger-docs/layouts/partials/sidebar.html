@@ -1,7 +1,5 @@
 <nav class="panel sidebar sidebar--docs">
   {{- range where .Site.Pages "Section" "docs" -}}
-    {{- if ne .Title "Jaeger, a distributed tracing system" -}}
     {{- .Render "block" }}
-    {{- end -}}
   {{- end -}}
 </nav>

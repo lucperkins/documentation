@@ -39,20 +39,24 @@
 
       <div class="column is-one-fifth">
         <h2 class="title is-size-5 has-text-white is-uppercase">Ecosystem</h2>
-        <span class="icon has-text-info">
-          <i class="fab fa-medium"></i>
+        <a href="https://github.com/{{ .Site.Params.githubRepo }}">
+          <span class="icon has-text-light">
+            <i class="fab fa-lg fa-github"></i>
+          </span>
+        </a>
+        <a href="https://twitter.com/{{ .Site.Params.twitter }}">
+          <span class="icon" style="color: #55acee;">
+            <i class="fab fa-lg fa-twitter"></i>
+          </span>
+        </a>
+        <span class="icon" style="color: #df386b;">
+          <i class="fab fa-gitter"></i>
         </span>
-        <span class="icon has-text-success">
-          <i class="fas fa-check-square"></i>
-        </span>
-        <span class="icon has-text-warning">
-          <i class="fas fa-exclamation-triangle"></i>
-        </span>
-        <span class="icon has-text-danger">
-          <i class="fas fa-ban"></i>
-        </span>
+        <span class="icon has-text-light">
+            <i class="fab fa-lg fa-medium"></i>
+          </span>
         <hr />
-        <a class="button is-primary">
+        <a class="button is-warning is-primary">
           <span class="icon">
             <i class="far fa-envelope"></i>
           </span>
