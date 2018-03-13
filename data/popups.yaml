@@ -1,2 +1,8 @@
-tracing:
-  definition: Tracing is...
+trace:
+  definition: A trace is...
+  related:
+  - span
+span:
+  definition: A span is...
+  related:
+  - trace

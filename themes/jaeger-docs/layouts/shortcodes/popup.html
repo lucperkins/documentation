@@ -1,21 +1,25 @@
-{{- $term := .Get 0 }}
-{{- $text := cond (len .Params | eq 2) (.Get 1) $term }}
-<span class="popup-term {{ $term }}">{{ $text }}</span>
-
-<div class="modal modal--{{ $term }}">
+{{- $word := .Get 0 }}
+{{- $text := cond (len .Params | eq 2) (.Get 1) $word }}
+{{- $term := index .Site.Data.popups $word }}
+{{- $definition := index $term "definition" }}
+{{- $relatedConcepts := index $term "related" }}
+<span class="popup-term" data-modal-id="{{ $word }}">{{ $text }}</span><div class="modal modal--{{ $word }}">
   <div class="modal-background"></div>
   <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">{{ $term }}</p>
-      <button class="delete" aria-label="close"></button>
-    </header>
     <section class="modal-card-body">
-      {{- $definition := index (index .Site.Data.popups $term) "definition" }}
-      {{ $term }} - {{ $definition | markdownify }}
+      <h1>{{ title $word }}</h1>
+      {{ $definition | markdownify }}
+      {{- with $relatedConcepts }}
+      <h3>Related concepts</h3>
+      <ul>
+        {{- range $relatedConcepts }}
+        <li><a href="/docs/concepts/{{ . }}">{{ title . }}</a></li>
+        {{- end }}
+      </ul>
+      {{- end }}
     </section>
     <footer class="modal-card-foot">
-      <button class="button is-success">Save changes</button>
-      <button class="button">Cancel</button>
+      <button class="button is-danger">Close</button>
     </footer>
-  </div>
+    </div>
 </div>

@@ -62,14 +62,18 @@
         document.querySelectorAll('.popup-term').forEach(function($el) {
           $el.addEventListener('click', function(e) {
             e.preventDefault();
-            const term = this.classList[1];
-            document.querySelector(`.modal.modal--${term}`).classList.add('is-active');
+            const term = this.dataset.modalId;
 
-            const modal = document.querySelector('.modal');
+            const html = document.querySelector('html');
+            const modal = document.querySelector(`.modal.modal--${term}`);
+
+            modal.classList.add('is-active');
+            html.classList.add('is-clipped');
 
             modal.addEventListener('click', function(e) {
               e.preventDefault();
               modal.classList.remove('is-active');
+              html.classList.remove('is-clipped');
             });
           });
         });
