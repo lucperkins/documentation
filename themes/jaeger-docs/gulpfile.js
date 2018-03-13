@@ -7,7 +7,7 @@ const gulp     = require('gulp'),
       del      = require('del');
 
 const SRCS = {
-  sass: 'source/sass/**/*.sass',
+  sass: 'source/sass/style.sass',
   js:   'source/js/**/*.js'
 }
 
@@ -17,15 +17,6 @@ const DIST = {
 }
 
 gulp.task('js', (done) => {
-  gulp.src(SRCS.js)
-    .pipe(uglify())
-    .pipe(concat('app.js'))
-    .pipe(gulp.dest(DIST.js));
-
-  done();
-});
-
-gulp.task('js-dev', (done) => {
   del(['static/js/app-*.js']);
 
   gulp.src(SRCS.js)
@@ -40,19 +31,10 @@ gulp.task('js-dev', (done) => {
 });
 
 gulp.task('js:watch', () => {
-  gulp.watch(SRCS.js, gulp.series('js-dev'));
+  gulp.watch(SRCS.js, gulp.series('js'));
 });
 
 gulp.task('sass', (done) => {
-  gulp.src(SRCS.sass)
-    .pipe(sass({
-      outputStyle: 'compressed'
-    }).on('error', sass.logError))
-    .pipe(gulp.dest(DIST.css));
-  done();
-});
-
-gulp.task('sass-dev', (done) => {
   del(['static/css/style-*.css']);
 
   gulp.src(SRCS.sass)
@@ -72,9 +54,9 @@ gulp.task('sass-dev', (done) => {
 });
 
 gulp.task('sass:watch', () => {
-  gulp.watch(SRCS.sass, gulp.series('sass-dev'));
+  gulp.watch(SRCS.sass, gulp.series('sass'));
 });
 
-gulp.task('build', gulp.series('js', 'sass'));
+gulp.task('build', gulp.series('sass', 'js'));
 
-gulp.task('dev', gulp.series('js-dev', 'sass-dev', gulp.parallel('js:watch', 'sass:watch')));
+gulp.task('dev', gulp.series('build', gulp.parallel('sass:watch', 'js:watch')));
