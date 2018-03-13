@@ -1,0 +1,21 @@
+{{- $term := .Get 0 }}
+{{- $text := cond (len .Params | eq 2) (.Get 1) $term }}
+<span class="popup-term {{ $term }}">{{ $text }}</span>
+
+<div class="modal modal--{{ $term }}">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">{{ $term }}</p>
+      <button class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      {{- $definition := index (index .Site.Data.popups $term) "definition" }}
+      {{ $term }} - {{ $definition | markdownify }}
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success">Save changes</button>
+      <button class="button">Cancel</button>
+    </footer>
+  </div>
+</div>
