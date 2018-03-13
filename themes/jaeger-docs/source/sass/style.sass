@@ -3,8 +3,9 @@
 
 @import ../../node_modules/bulma/sass/utilities/initial-variables
 
-$primary: #7dcee1
-$dark: #293349
+$primary: #60d0e4
+$dark: #26324c
+$link: darken($primary, 10%)
 
 $family-sans-serif: "Proxima Nova", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !default
 $navbar-height: 6rem
@@ -36,7 +37,7 @@ body.body
 
   &.hero--home
     .hero--subtitle a
-      color: $primary !important
+      color: $link !important
 
 .navbar
   border-bottom: 1px solid $white-ter
