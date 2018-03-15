@@ -1,11 +1,13 @@
-HUGO_VERSION := 0.36
-FIREBASE     := node_modules/.bin/firebase
-FIREBASE_PROJECT := jaeger-docs
-GULP         := node_modules/.bin/gulp
+HUGO_VERSION = 0.36
+NODE_BIN     = node_modules/.bin
+FIREBASE     := $(NODE_BIN)/firebase
+FIREBASE_PROJECT = jaeger-docs
+GULP         := $(NODE_BIN)/gulp
 HUGO_THEME   := jaeger-docs
 THEME_DIR    := themes/$(HUGO_THEME)
 YARN         := /usr/local/bin/yarn
 HUGO         := /usr/local/bin/hugo
+CONCURRENTLY := $(NODE_BIN)/concurrently
 
 hugo-install-macos:
 	brew switch hugo $(HUGO_VERSION)
@@ -24,7 +26,10 @@ build-assets:
 circleci-setup: assets-dev-setup
 	./scripts/setup.sh $(HUGO_VERSION) Linux
 
-develop-content: build-assets
+dev:
+	$(CONCURRENTLY) "make develop-content" "make develop-assets"
+
+develop-content:
 	ENV=dev $(HUGO) server --disableFastRender
 
 develop-assets:
