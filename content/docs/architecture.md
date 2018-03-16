@@ -1,6 +1,7 @@
 ---
 title: Architecture
-draft: true
+rank: 2
+icon: warehouse
 ---
 
 {{< popup "trace" "Traces" >}} are something or other

@@ -1,0 +1,4 @@
+platforms:
+- name: macOS
+- name: Ubuntu
+- name: CentOS

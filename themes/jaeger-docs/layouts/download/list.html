@@ -1,0 +1,40 @@
+{{ define "main" }}
+{{- $platforms := .Site.Data.downloads.platforms }}
+<section class="hero hero--docs is-info">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title is-size-1{{ if .Params.description }} is-spaced{{ end }}">
+        {{ .Title }}
+      </h1>
+      {{- with .Params.description }}
+      <h2 class="subtitle">
+        {{ . }}
+      </h2>
+      {{- end }}
+    </div>
+  </div>
+</section>
+
+<article class="article article--download">
+  <div class="container">
+    <section class="content">
+      <h2 class="is-size-2">Platforms</h2>
+      {{- range $platforms }}
+      <h3 class="is-size-3">{{ .name }}</h3>
+      <table>
+        <thead>
+          <th>Binary</th>
+          <th>Source</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a>jaeger-{{ .name | lower }}-bin.tar.gz</a></td>
+            <td><a>jaeger-{{ .name | lower }}-src.tar.gz</a></td>
+          </tr>
+        </tbody>
+      </table>
+      {{- end }}
+    </section>
+  </div>
+</article>
+{{ end }}

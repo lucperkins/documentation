@@ -59,10 +59,24 @@ function controlModals() {
   });
 }
 
+function toggleTocFixed() {
+  var topHeight = $('.hero').height();
+
+  $(window).scroll(function() {
+
+    if ($(window).scrollTop() > topHeight) {
+      //$('.toc').classList.remove('toc--fixed');
+      $('.toc').addClass('toc--fixed');
+    } else {
+      $('.toc').removeClass('toc--fixed');
+    }
+  });
+}
 
 document.addEventListener('DOMContentLoaded', function () {
   scrollOffset();
   addLinkAnchors();
   navbarToggle();
   controlModals();
+  toggleTocFixed();
 });

@@ -1,5 +1,15 @@
 <nav class="panel sidebar sidebar--docs">
   {{- range where .Site.RegularPages "Section" "docs" -}}
-    {{- .Render "block" }}
+  {{- $isThisPage := eq $.Page.Title .Title }}
+  <a href="{{ .Permalink }}" class="panel-block {{ if $isThisPage }} is-active{{ end }}">
+    {{- if $isThisPage }}
+    <span class="panel-icon">
+      <i class="fas fa-arrow-right"></i>
+    </span>
+    {{- end }}
+    <span class="is-size-4">
+      {{ .Title }}
+    </span>
+  </a>
   {{- end -}}
 </nav>

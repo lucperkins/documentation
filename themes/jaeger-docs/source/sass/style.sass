@@ -51,8 +51,26 @@ body.body
   .heading, .title
     color: $white
 
-.section--cncf
-  background-color: $white-ter
+.section
+  &.section--cncf
+    background-color: $white-ter
+
+    +mobile
+      img
+        width: 70%
+
+    +touch
+      img
+        width: 60%
+
+    +desktop
+      img
+        width: 40%
+
+  &.section--features
+    .column + .column
+      margin-top: 1.25rem
+
 
 .navbar
   .navbar-menu
@@ -60,26 +78,40 @@ body.body
       font-size: 1.5rem
 
 .footer
+  z-index: 999
+
   .column
     padding-left: 1rem
     border-left: 1px solid $grey-light
 
 .article
-  &.article--docs
-    margin: 3rem 0
+  &.article--docs, &.article--download
+    margin: 3rem 0 10rem 0
 
 .sidebar
   &.sidebar--docs
     position: fixed
 
+.content
+  .highlight pre code
+    font-size: 1rem
+
 aside.toc
-  position: fixed
   padding-left: 1rem
+  display: inline-block
+  max-width: 100%
+
+  &.toc--fixed
+    position: fixed
+    top: 15%
 
   #TableOfContents
     border-left: 3px solid $primary
     padding-left: 1rem
     max-width: 80%
+    $font-size-root: 1.5rem
+    $padding-root: 1.25rem
+    color: $black
 
     a
       color: $black
@@ -88,34 +120,17 @@ aside.toc
       li
         ul
           li
+            font-size: $font-size-root
             ul
               li
-                padding-left: 1.5rem
+                font-size: $font-size-root * .75
+                padding-left: $padding-root
                 ul
                   li
-                    padding-left: 2rem
+                    padding-left: $padding-root * 1.5
 
   .button
     margin-top: 2rem
     color: white
     background-color: black
     border: none
-
-+mobile
-  .section--cncf
-    img
-      width: 70%
-
-  .section--features
-    .column + .column
-      margin-top: 1.25rem
-
-+touch
-  .section--cncf
-    img
-      width: 60%
-
-+desktop
-  .section--cncf
-    img
-      width: 40%
