@@ -9,17 +9,6 @@
     <section class="modal-card-body">
       <h1>{{ title $word }}</h1>
       {{ $definition | markdownify }}
-      {{- with $relatedConcepts }}
-      <h3>Related concepts</h3>
-      <ul>
-        {{- range $relatedConcepts }}
-        <li><a href="/docs/concepts/{{ . }}">{{ title . }}</a></li>
-        {{- end }}
-      </ul>
-      {{- end }}
     </section>
-    <footer class="modal-card-foot">
-      <button class="button is-danger">Close</button>
-    </footer>
-    </div>
+  </div>
 </div>

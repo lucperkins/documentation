@@ -39,22 +39,16 @@ function navbarToggle() {
 }
 
 function controlModals() {
-  document.querySelectorAll('.popup-term').forEach(function(el) {
-    el.addEventListener('click', function(e) {
-      e.preventDefault();
-      var term = this.dataset.modalId;
+  $('.popup-term').click(function() {
+    var term = this.dataset.modalId;
+    var html = $('html');
+    var modal = $('.modal');
+    modal.addClass('is-active');
+    html.addClass('is-clipped');
 
-      var html = document.querySelector('html');
-      var modal = document.querySelector(".modal.modal--" + term);
-
-      modal.classList.add('is-active');
-      html.classList.add('is-clipped');
-
-      modal.addEventListener('click', function(e) {
-        e.preventDefault();
-        modal.classList.remove('is-active');
-        html.classList.remove('is-clipped');
-      });
+    modal.click(function() {
+      modal.removeClass('is-active');
+      html.removeClass('is-clipped');
     });
   });
 }
@@ -62,12 +56,10 @@ function controlModals() {
 function toggleTocFixed() {
   var topHeight = $('.hero').height() + $('.tabs').height();
 
-  //$('.toc--title').hide();
+  $('.toc--title').hide();
 
   $(window).scroll(function() {
-
     if ($(window).scrollTop() > topHeight) {
-      //$('.toc').classList.remove('toc--fixed');
       $('.toc').addClass('toc--frozen');
       $('.toc--title').fadeIn();
     } else {
@@ -77,7 +69,7 @@ function toggleTocFixed() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+$(function () {
   scrollOffset();
   addLinkAnchors();
   navbarToggle();
