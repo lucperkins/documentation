@@ -3,6 +3,7 @@ title: Jaeger, a distributed tracing system
 theme: jaeger-docs
 languageCode: en-us
 pygmentsCodeFences: true
+pygmentsUseClasses: true
 
 params:
   description: |

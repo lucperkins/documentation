@@ -7,7 +7,7 @@ const gulp     = require('gulp'),
       del      = require('del');
 
 const SRCS = {
-  sass: 'source/sass/style.sass',
+  sass: 'source/sass/**/*.sass',
   js:   'source/js/**/*.js'
 }
 

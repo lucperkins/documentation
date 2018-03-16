@@ -6,6 +6,8 @@ $dark-green: rgb(100, 139, 26)
 $beige: rgb(223, 201, 162)
 $black: rgb(35, 31, 32)
 
+$syntax-magenta: #f92672
+
 $primary: $blue
 $dark: #26324c
 $link: darken($primary, 10%)
@@ -87,8 +89,11 @@ body.body
 .article
   &.article--docs
     .content
-      .highlight pre code
-        font-size: 1rem
+      p code
+        color: $syntax-magenta
+
+      code
+        background-color: $white-ter
 
       +touch
         margin: 0 7%
