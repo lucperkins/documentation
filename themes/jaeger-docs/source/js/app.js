@@ -60,15 +60,19 @@ function controlModals() {
 }
 
 function toggleTocFixed() {
-  var topHeight = $('.hero').height();
+  var topHeight = $('.hero').height() + $('.tabs').height();
+
+  //$('.toc--title').hide();
 
   $(window).scroll(function() {
 
     if ($(window).scrollTop() > topHeight) {
       //$('.toc').classList.remove('toc--fixed');
-      $('.toc').addClass('toc--fixed');
+      $('.toc').addClass('toc--frozen');
+      $('.toc--title').fadeIn();
     } else {
-      $('.toc').removeClass('toc--fixed');
+      $('.toc').removeClass('toc--frozen');
+      $('.toc--title').hide();
     }
   });
 }

@@ -1,36 +1,17 @@
 <section class="section section--features">
   <div class="container has-text-centered">
-    <section class="section">
-      <div class="columns">
-        <div class="column is-one-quarter">
-          <span class="icon">
-            <i class="material-icons is-size-1 has-text-primary">data_usage</i>
-          </span>
-          <h1 class="title">Client libraries</h1>
-          <p class="is-size-6 has-text-dark"><a href="https://opentracing.io">OpenTracing</a>-compatible data model and instrumentation libraries in Go, Java, and C++</p>
-        </div>
-        <div class="column is-one-quarter">
-          <span class="icon">
-            <i class="material-icons is-size-1 has-text-primary">graphic_eq</i>
-          </span>
-          <h1 class="title">Sampling</h1>
-          <p class="is-size-6 has-text-dark">Adaptive sampling (coming soon)</p>
-        </div>
-        <div class="column is-one-quarter">
-          <span class="icon">
-            <i class="material-icons is-size-1 has-text-primary">cached</i>
-          </span>
-          <h1 class="title">Per-endpoint sampling</h1>
-          <p class="is-size-6 has-text-dark">Uses consistent upfront sampling with individual per-service/endpoint probabilities</p>
-        </div>
-        <div class="column is-one-quarter">
-          <span class="icon">
-            <i class="material-icons is-size-1 has-text-primary">done_all</i>
-          </span>
-          <h1 class="title">Pipeline</h1>
-          <p class="is-size-6 has-text-dark">Post-collection data processing pipeline (coming soon)</p>
-        </div>
+    <h2 class="title is-size-2 is-size-3-mobile">
+      Problems that Jaeger addresses
+    </h2>
+    <div class="columns">
+      {{- range .Site.Data.indexpage.features }}
+      <div class="column has-text-centered">
+        <span class="icon is-large">
+          <i class="material-icons is-size-1 has-text-primary">{{ default "data_usage" .icon }}</i>
+        </span>
+        <h4 class="is-size-4 is-size-5-mobile">{{ .text | markdownify }}</h4>
       </div>
-    </section>
+      {{- end }}
+    </div>
   </div>
 </section>
