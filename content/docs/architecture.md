@@ -1,5 +1,6 @@
 ---
 title: Architecture
+draft: true
 ---
 
 {{< popup "trace" "Traces" >}} are something or other

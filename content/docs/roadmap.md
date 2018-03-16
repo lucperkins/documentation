@@ -1,5 +1,6 @@
 ---
 title: Roadmap
+draft: true
 ---
 
 The following is only a selection of some of the major features we plan to implement in the near future (6-12 months).

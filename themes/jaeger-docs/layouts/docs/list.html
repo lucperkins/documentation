@@ -3,14 +3,50 @@ Jaeger documentation
 {{ end }}
 
 {{ define "main" }}
+<section class="hero hero--docs is-info">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title is-size-1 is-spaced">
+        The Jaeger documentation
+      </h1>
+      <h2 class="subtitle">
+          Welcome to Jaeger's documentation portal! Below, you'll find information for beginners and experienced Jaeger users alike.
+      </h2>
+    </div>
+  </div>
+</section>
+
 <div class="container">
-  <h1>Jaeger documentation</h1>
-  <p>The following documents are available:</p>
-  {{- range .Data.Pages }}
-  <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
-  {{- end }}
-  <hr />
-  {{ .Content }}
-  <hr />
+  {{ partial "sidebar.html" .Data.Pages }}
 </div>
 {{ end }}
+
+<article class="article article--docs">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-2 is-hidden-touch">
+          {{ partial "sidebar.html" .Data.Pages }}
+        </div>
+
+        <div class="column is-8">
+          <section class="content">
+            {{ .Content }}
+          </section>
+        </div>
+
+        <div class="column is-2 is-hidden-touch">
+          <aside class="toc">
+            <h1 class="title is-size-4">{{ .Title }}</h1>
+            {{ .TableOfContents }}
+
+            <a href="{{ $githubUrl }}" class="button is-small is-shadowless">
+              <span class="icon is-medium">
+                <i class="fab fa-github"></i>
+              </span>
+              <span>Edit this page</span>
+            </a>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </article>
