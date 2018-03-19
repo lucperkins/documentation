@@ -6,13 +6,15 @@ rank: 5
 Jaeger's clients adhere to the data model described in the OpenTracing standard. Reading the [specification](https://github.com/opentracing/specification/blob/master/specification.md) will help you understand this section better.
 
 ## Terminology
+
 ### Span
-A {{< popup "span" >}} represents a logical unit of work in the system that has an operation name, the start time of the operation, and the duration. Spans may be nested and ordered to model causal relationships. An RPC call is an example of a span.
+A **span** represents a logical unit of work in the system that has an operation name, the start time of the operation, and the duration. Spans may be nested and ordered to model causal relationships. An RPC call is an example of a span.
 
 ![Traces And Spans](/img/spans-traces.png)
 
 ### Trace
-A {{< popup "trace" "trace" >}} is a data/execution path through the system, and can be thought of as a directed acyclic graph of {{< popup "span" "spans" >}}.
+
+A **trace** is a data/execution path through the system, and can be thought of as a directed acyclic graph of [spans](#span).
 
 ## Components
 ![Architecture](/img/architecture.png)

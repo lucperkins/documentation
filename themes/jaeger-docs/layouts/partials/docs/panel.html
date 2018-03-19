@@ -2,8 +2,8 @@
   {{- range (where .Site.Pages "Section" "docs").ByParam "rank" }}
   {{- $isCurrentPage := eq .Title $.Title }}
   {{- $title := cond (isset .Params "navtitle") (index .Params "navtitle") .Title }}
-  <h4 class="is-size-4">
-    <a class="nav-link{{ if $isCurrentPage }} is-active{{ end }}" href="{{ .Permalink }}">{{ $title }}</a>
+  <h4 class="nav-link is-size-4{{ if $isCurrentPage }} is-active{{ end }}">
+    <a href="{{ .Permalink }}">{{ $title }}</a>
   </h4>
   {{- end }}
 </aside>

@@ -11,16 +11,22 @@
   padding-right: 3rem
   z-index: 3
 
-  .nav-link
-    color: black
+  h4.nav-link
+    & + .nav-link
+      margin-top: .25rem
+
+    a
+      color: black
+
+      &:hover
+        color: $jaeger-beige
+        font-weight: 700
 
     &.is-active
-      color: $primary
-      font-weight: 700
+      a
+        color: $primary
+        font-weight: 700
 
-    &:hover
-      color: $jaeger-beige
-      font-weight: 600
 
 .popup-term
   color: $primary
@@ -144,7 +150,7 @@ body.body
         ul
           li
             & + li
-              margin-top: .5rem
+              margin-top: .75rem
             font-size: $font-size-root
             ul
               li
