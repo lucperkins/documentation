@@ -1,14 +1,4 @@
 {{- $word := .Get 0 }}
-{{- $text := cond (len .Params | eq 2) (.Get 1) $word }}
-{{- $term := index .Site.Data.popups $word }}
-{{- $definition := index $term "definition" }}
-{{- $relatedConcepts := index $term "related" }}
-<span class="popup-term" data-modal-id="{{ $word }}">{{ $text }}</span><div class="modal modal--{{ $word }}">
-  <div class="modal-background"></div>
-  <div class="modal-card">
-    <section class="modal-card-body">
-      <h1>{{ title $word }}</h1>
-      {{ $definition | markdownify }}
-    </section>
-  </div>
-</div>
+{{- $text := cond (eq (len .Params) 2) (.Get 1) $word }}
+{{- .Page.Scratch.Add "popups" (slice $word) }}
+<span class="popup-term" data-modal-id="{{ $word }}">{{ $text }}</span>

@@ -1,6 +1,6 @@
 ---
 title: Features
-draft: true
+rank: 3
 ---
 
 Jaeger is used for monitoring and troubleshooting microservices-based distributed systems, including:

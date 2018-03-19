@@ -1,8 +1,8 @@
 trace:
-  definition: A trace is...
+  definition: A trace is a data/execution path through the system, and can be thought of as a directed acyclic graph of spans.
   related:
   - span
 span:
-  definition: A span is...
+  definition: A span represents a logical unit of work in the system that has an operation name, the start time of the operation, and the duration.
   related:
   - trace

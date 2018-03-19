@@ -1,14 +1,15 @@
 ---
-title: News
-draft: true
+title: Jaeger news
+rank: 8
 ---
 
+## Announcing Jaeger v1.0
 **2017-12-06**
 
 Today we reached a milestone and released v1.0 of Jaeger backend. Details are in this
 [Medium blog post](https://medium.com/jaegertracing/announcing-jaeger-1-0-37b5990cc59b).
 
-# Jaeger Joins Cloud Native Computing Foundation
+## Jaeger Joins Cloud Native Computing Foundation
 **2017-09-25**
 
 At the [Open Source Summit NA](http://events.linuxfoundation.org/events/open-source-summit-north-america) in Los Angeles,
@@ -24,10 +25,10 @@ News coverage:
   * [eWeek: Uber and Lyft Bring Open-Source Cloud Projects to CNCF](http://www.eweek.com/cloud/uber-and-lyft-bring-open-source-cloud-projects-to-cncf)
   * [ZDNet: Lyft and Uber travel the same open-source road](http://www.zdnet.com/article/lyft-and-uber-travel-the-same-open-source-road/)
 
-# Introducing Jaeger
+## Introducing Jaeger
 **2017-04-14**
 
-<img align="right" src="/img/jaeger-vector.svg" width=400>
+<!-- <img align="right" src="/img/jaeger-vector.svg"> -->
 Uber is pleased to announce the open source release of Jaeger, a distributed tracing system, used to monitor, profile, and troubleshoot microservices.
 
 Jaeger is written in Go, with OpenTracing compatible client libraries in [Go](https://github.com/jaegertracing/jaeger-client-go), [Java](https://github.com/jaegertracing/jaeger-client-java), [Node](https://github.com/jaegertracing/jaeger-client-node), and [Python](https://github.com/jaegertracing/jaeger-client-python). It allows service owners to instrument their services to get insights into what their architecture is doing.

@@ -1,6 +1,6 @@
 ---
 title: Client libraries
-draft: true
+rank: 4
 ---
 
 ## Official libraries

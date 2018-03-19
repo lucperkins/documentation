@@ -1,8 +1,7 @@
 ---
-title: Jaeger, a distributed tracing system
+title: Introduction
+rank: 1
 ---
-
-<img align="right" src="/img/jaeger-vector.svg" width=400>
 
 Welcome to Jaeger's documentation portal! Below, you'll find information for beginners and experienced Jaeger users.
 

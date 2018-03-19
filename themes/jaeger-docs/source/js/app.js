@@ -53,26 +53,9 @@ function controlModals() {
   });
 }
 
-function toggleTocFixed() {
-  var topHeight = $('.hero').height() + $('.tabs').height();
-
-  $('.toc--title').hide();
-
-  $(window).scroll(function() {
-    if ($(window).scrollTop() > topHeight) {
-      $('.toc').addClass('toc--frozen');
-      $('.toc--title').fadeIn();
-    } else {
-      $('.toc').removeClass('toc--frozen');
-      $('.toc--title').hide();
-    }
-  });
-}
-
 $(function () {
   scrollOffset();
   addLinkAnchors();
   navbarToggle();
   controlModals();
-  toggleTocFixed();
 });

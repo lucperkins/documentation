@@ -1,8 +1,6 @@
 ---
 title: Getting started
-description: From zero to up and going in no time!
-icon: rocket
-rank: 1
+rank: 2
 ---
 
 ## All in one Docker image

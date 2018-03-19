@@ -1,0 +1,8 @@
+<aside class="nav">
+  {{- range (where .Site.Pages "Section" "docs").ByParam "rank" }}
+  {{- $isCurrentPage := eq .Title $.Title }}
+  <h4 class="is-size-4">
+    <a class="nav-link{{ if $isCurrentPage }} is-active{{ end }}" href="{{ .Permalink }}">{{ .Title }}</a>
+  </h4>
+  {{- end }}
+</aside>

@@ -3,8 +3,27 @@
 @import ../../node_modules/bulma/bulma
 @import "syntax"
 
+.is-fixed-bottom
+  border-top: 1px solid $white-ter
+
+.nav
+  position: fixed
+  padding-right: 3rem
+  z-index: 3
+
+  .nav-link
+    color: black
+
+    &.is-active
+      color: $primary
+      font-weight: 700
+
+    &:hover
+      color: $jaeger-beige
+
 .popup-term
-  color: orange
+  color: $primary
+  font-weight: 600
 
   &:hover
     cursor: help
@@ -60,14 +79,26 @@ body.body
 
 .footer
   z-index: 999
+  color: white
 
-  .column
-    padding-left: 1rem
-    border-left: 1px solid $grey-light
+  .icon
+    margin-right: .5rem
+
+  a:hover
+    color: $white-ter
+
+  h4
+    margin-bottom: 1rem
+
+  .fa-caret-right
+    color: $jaeger-blue
+    margin-right: .5rem
 
 .article
   &.article--docs, &.article--download
     .content
+      z-index: 998
+
       p code
         color: $syntax-magenta
 
@@ -90,20 +121,19 @@ body.body
     position: fixed
 
 .toc
+  z-index: 1
   padding-left: 1rem
   width: inherit
   position: fixed
 
-  &.toc--frozen
-    top: 20%
-
   #TableOfContents
     border-left: 3px solid $jaeger-beige
     padding-left: 1rem
-    max-width: 80%
-    $font-size-root: 1.5rem
+    $font-size-root: 1.2rem
     $padding-root: 1.25rem
     color: $black
+    max-width: 80%
+    line-height: 150%
 
     a
       color: $black
@@ -112,14 +142,18 @@ body.body
       li
         ul
           li
+            & + li
+              margin-top: .5rem
             font-size: $font-size-root
             ul
               li
-                font-size: $font-size-root * .8
+                & + li
+                  margin-top: .25rem
+                font-size: $font-size-root * .9
                 padding-left: $padding-root
                 ul
                   li
-                    font-size: $font-size-root * .6
+                    font-size: $font-size-root * .8
                     padding-left: $padding-root
 
   .button
