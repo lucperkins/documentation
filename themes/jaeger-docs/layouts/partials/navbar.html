@@ -17,11 +17,21 @@
 
     <div id="topNav" class="navbar-menu">
       <div class="navbar-end">
-        {{- range .Site.Params.navbar.links }}
-        <a class="navbar-item" href="{{ .url }}">
-          {{ .title | upper }}
+        <a class="navbar-item" href="/download">
+          Download
         </a>
-        {{- end }}
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="/docs">
+            Docs
+          </a>
+          <div class="navbar-dropdown is-boxed">
+            {{- range (where .Site.Pages "Section" "docs").ByParam "rank" }}
+            <a class="navbar-item" href="{{ .Permalink }}">
+              {{ cond (isset .Params "navtitle") (.Params.navtitle) .Title }}
+            </a>
+            {{- end }}
+          </div>
+        </div>
         {{- with $githubRepo }}
         <a class="navbar-item" href="https://github.com/{{ . }}" target="_blank">
           <span class="icon">

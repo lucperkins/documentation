@@ -1,15 +1,18 @@
 ---
 title: Jaeger news
+navtitle: News
 rank: 8
 ---
 
 ## Announcing Jaeger v1.0
+
 **2017-12-06**
 
 Today we reached a milestone and released v1.0 of Jaeger backend. Details are in this
 [Medium blog post](https://medium.com/jaegertracing/announcing-jaeger-1-0-37b5990cc59b).
 
 ## Jaeger Joins Cloud Native Computing Foundation
+
 **2017-09-25**
 
 At the [Open Source Summit NA](http://events.linuxfoundation.org/events/open-source-summit-north-america) in Los Angeles,
@@ -26,6 +29,7 @@ News coverage:
   * [ZDNet: Lyft and Uber travel the same open-source road](http://www.zdnet.com/article/lyft-and-uber-travel-the-same-open-source-road/)
 
 ## Introducing Jaeger
+
 **2017-04-14**
 
 <!-- <img align="right" src="/img/jaeger-vector.svg"> -->

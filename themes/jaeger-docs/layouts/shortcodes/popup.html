@@ -1,4 +1,4 @@
 {{- $word := .Get 0 }}
-{{- $text := cond (eq (len .Params) 2) (.Get 1) $word }}
+{{- $text := cond (len .Params | eq 2) (.Get 1) (.Get 0) }}
 {{- .Page.Scratch.Add "popups" (slice $word) }}
 <span class="popup-term" data-modal-id="{{ $word }}">{{ $text }}</span>
