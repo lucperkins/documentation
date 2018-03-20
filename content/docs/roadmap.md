@@ -67,7 +67,7 @@ request paths from upstream services. In the screenshot below we see how selecti
 a portion of the histogram reveals the breakdowns of the endpoints and upstream callers
 that are responsible for the long tail.
 
-<img src="/img/latency-histrogram.png">
+<img src="/img/latency-histogram.png">
 
 ## Trace Quality Metrics
 

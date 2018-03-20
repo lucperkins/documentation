@@ -15,10 +15,15 @@ hugo-install-macos:
 
 content-edit-setup: hugo-install-macos
 
+clean:
+	rm -rf public
+
 assets-dev-setup:
 	(cd $(THEME_DIR) && $(YARN) && npm rebuild node-sass --force)
 
-build: build-assets
+build: build-assets build-content
+
+build-content: clean
 	$(HUGO) -v
 
 build-assets:
@@ -52,7 +57,7 @@ htmlproofer-setup:
 	NOKOGIRI_USE_SYSTEM_LIBRARIES=true bundle install \
 		--path vendor/bundle
 
-htmlproofer: build
+htmlproofer: build-content
 	$(HTMLPROOFER) \
         --empty-alt-ignore \
         --allow-hash-href \
