@@ -29,7 +29,7 @@ circleci-setup: assets-dev-setup
 dev:
 	$(CONCURRENTLY) "make develop-content" "make develop-assets"
 
-develop-content:
+develop-content: build-assets
 	ENV=dev $(HUGO) server
 
 develop-assets:
