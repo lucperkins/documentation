@@ -6,10 +6,14 @@
 .is-fixed-bottom
   border-top: 1px solid $white-ter
 
+.hr--docs
+  height: 3px
+  color: $white-ter
+
 .nav
   position: fixed
-  padding-right: 3rem
-  z-index: 3
+  overflow-x: auto
+  //padding-right: 3rem
 
   h4.nav-link
     & + .nav-link
@@ -17,6 +21,9 @@
 
     a
       color: black
+
+      +touch
+        color: red
 
       &:hover
         color: $jaeger-beige
@@ -143,7 +150,7 @@ body.body
     $padding-root: 1.25rem
     color: $black
     max-width: 80%
-    line-height: 150%
+    line-height: 140%
 
     a
       color: $black

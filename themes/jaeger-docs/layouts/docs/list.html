@@ -13,9 +13,10 @@ Jaeger documentation
 
       <div class="column is-8 is-full-touch">
         <section class="content is-medium">
-          <h1 class="title is-size-1{{ if .Params.description }} is-spaced{{ end }}">{{ .Title }}</h1>
-          {{- with .Params.description }}<h3 class="subtitle is-size-3">{{ . }}</h3>{{ end }}
-          <hr />
+          {{ partial "docs/header.html" . }}
+
+          <hr class="hr--docs" />
+
           {{ .Content }}
         </section>
       </div>
