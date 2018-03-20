@@ -7,13 +7,14 @@ const gulp     = require('gulp'),
       del      = require('del');
 
 const SRCS = {
-  sass: 'source/sass/**/*.sass',
-  js:   'source/js/**/*.js'
+  sass:      'source/sass/style.sass',
+  sassWatch: 'source/sass/**/*.sass',
+  js:        'source/js/**/*.js'
 }
 
 const DIST = {
   css: 'static/css',
-  js: 'static/js'
+  js:  'static/js'
 }
 
 gulp.task('js', (done) => {
@@ -54,7 +55,7 @@ gulp.task('sass', (done) => {
 });
 
 gulp.task('sass:watch', () => {
-  gulp.watch(SRCS.sass, gulp.series('sass'));
+  gulp.watch(SRCS.sassWatch, gulp.series('sass'));
 });
 
 gulp.task('build', gulp.series('sass', 'js'));

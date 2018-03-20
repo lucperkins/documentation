@@ -16,12 +16,12 @@ hugo-install-macos:
 content-edit-setup: hugo-install-macos
 
 clean:
-	rm -rf public $(THEME_DIR)/data/assetHashes.json
+	rm -rf public $(THEME_DIR)/data/assetHashes.json $(THEME_DIR)/static
 
 assets-dev-setup:
 	(cd $(THEME_DIR) && $(YARN) && npm rebuild node-sass --force)
 
-build: build-assets build-content
+build: clean build-assets build-content
 
 build-content:
 	$(HUGO) -v
