@@ -1,4 +1,5 @@
 HUGO_VERSION = 0.36
+HTMLPROOFER  = bundle exec htmlproofer
 NODE_BIN     = node_modules/.bin
 FIREBASE     := $(NODE_BIN)/firebase
 FIREBASE_PROJECT = jaeger-docs
@@ -43,3 +44,16 @@ deploy: build
 
 open-site:
 	open https://$(FIREBASE_PROJECT).firebaseapp.com
+
+htmlproofer-setup:
+	gem install bundler \
+        --no-rdoc \
+        --no-ri
+	NOKOGIRI_USE_SYSTEM_LIBRARIES=true bundle install \
+		--path vendor/bundle
+
+htmlproofer: build
+	$(HTMLPROOFER) \
+        --empty-alt-ignore \
+        --allow-hash-href \
+        public

@@ -89,7 +89,7 @@ Then navigate to `http://localhost:8080`.
 
 ## Client Libraries
 
-Look [here](client_libraries.md).
+Look [here](../client-libraries).
 
 ## Running Individual Jaeger Components
 Individual Jaeger backend components can be run from source.
