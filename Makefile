@@ -36,7 +36,10 @@ dev:
 	$(CONCURRENTLY) "make develop-content" "make develop-assets"
 
 develop-content: build-assets
-	ENV=dev $(HUGO) server
+	ENV=dev $(HUGO) server \
+        --buildDrafts \
+        --buildFuture \
+        --disableFastRender
 
 develop-assets:
 	(cd $(THEME_DIR) && $(GULP) dev)
