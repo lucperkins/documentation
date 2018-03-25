@@ -1,6 +1,8 @@
 ---
 title: Getting started
+description: Get up and running with Jaeger in your local environment
 rank: 2
+tags: [intro, docker]
 ---
 
 ## All in one Docker image
