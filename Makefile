@@ -64,5 +64,4 @@ htmlproofer-setup:
 htmlproofer: build
 	$(HTMLPROOFER) \
         --empty-alt-ignore \
-        --allow-hash-href \
         public
