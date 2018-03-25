@@ -1,7 +1,0 @@
-{{- $isThisPage := eq .Title .Params.title }}
-<a href="{{ .Permalink }}" class="panel-block{{ if $isThisPage }} is-active{{ end }}">
-  <span class="panel-icon">
-    <i class="far fa-file"></i>
-  </span>
-  {{ .Title }}
-</a>
