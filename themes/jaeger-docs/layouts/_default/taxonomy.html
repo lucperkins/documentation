@@ -1,0 +1,19 @@
+{{ define "main" }}
+{{- $taxonomyName := .Data.Singular }}
+{{- $term := .Title }}
+<article class="article article--terms">
+  <div class="container">
+    <h1 class="is-size-1">All pages with the {{ $taxonomyName }} <strong>{{ lower $term }}</strong></h1>
+    <hr class="hr" />
+    <div class="content">
+      <ul>
+        {{- range .Data.Pages }}
+        <li>
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
+        </li>
+        {{- end }}
+      </ul>
+    </div>
+  </div>
+</article>
+{{ end }}

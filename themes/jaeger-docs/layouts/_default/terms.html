@@ -1,10 +1,16 @@
 {{ define "main" }}
-<div class="container">
-  <h2>Relevant pages for the {{ .Data.Singular }} <strong>{{ .Data.Term }}</strong></h2>
-  <ul>
-    {{ range .Data.Pages }}
-    <li><a href="{{ .Permalink }}">{{ .Title }}</a> ({{ .Type }})</li>
-    {{ end }}
-  </ul>
-</div>
+{{- $taxonomyName := .Data.Plural }}
+<article class="article article--terms">
+  <div class="container">
+    <h1 class="is-size-1">All {{ $taxonomyName }}</h1>
+    <hr class="hr" />
+    <div class="content">
+      <ul>
+        {{- range $tag, $taxonomy := .Site.Taxonomies.tags }}
+        <li><a href="/tags/{{ $tag }}">{{ $tag }}</a></li>
+        {{- end }}
+      </ul>
+    </div>
+  </div>
+</article>
 {{ end }}
