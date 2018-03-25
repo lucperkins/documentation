@@ -4,8 +4,11 @@ theme: jaeger-docs
 languageCode: en-us
 pygmentsCodeFences: true
 pygmentsUseClasses: true
-taxonomies:
-  tag: tags
+#taxonomies:
+#  tag: tags
+disableKinds:
+- taxonomy
+- taxonomyTerm
 
 params:
   description: |

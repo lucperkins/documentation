@@ -52,13 +52,20 @@
   &:hover
     cursor: help
 
-body.body
+.page
   display: flex
   min-height: 100vh
   flex-direction: column
 
   main.main
     flex: 1
+
+  &--404
+    img.logo
+      margin-bottom: 2%
+
+    ul li
+      font-size: 1.5rem
 
 .hero
   &.hero--home, &.hero--docs
