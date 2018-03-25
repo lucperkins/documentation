@@ -1,0 +1,9 @@
+[build]
+publish = "public"
+command = "make build"
+
+[context.production.environment]
+HUGO_VERSION = "0.37.1"
+
+[context.staging.environment]
+HUGO_VERSION = "0.37.0"
