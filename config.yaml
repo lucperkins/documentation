@@ -4,6 +4,8 @@ theme: jaeger-docs
 languageCode: en-us
 pygmentsCodeFences: true
 pygmentsUseClasses: true
+taxonomies:
+  tag: tags
 
 params:
   description: |
