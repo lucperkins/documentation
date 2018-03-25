@@ -9,6 +9,7 @@ THEME_DIR    := themes/$(HUGO_THEME)
 YARN         := /usr/local/bin/yarn
 HUGO         := /usr/local/bin/hugo
 CONCURRENTLY := $(NODE_BIN)/concurrently
+WRITE_GOOD   := $(NODE_BIN)/write-good
 
 hugo-install-macos:
 	brew switch hugo $(HUGO_VERSION)
@@ -65,3 +66,6 @@ htmlproofer: build
 	$(HTMLPROOFER) \
         --empty-alt-ignore \
         public
+
+write-good:
+	$(WRITE_GOOD) content/**/*.md
