@@ -1,13 +1,25 @@
 {{ define "main" }}
-{{- $taxonomyName := .Data.Plural }}
+{{- $taxonomyNamePlural := .Data.Plural }}
 <article class="article article--terms">
   <div class="container">
-    <h1 class="is-size-1">All {{ $taxonomyName }}</h1>
+    <h1 class="is-size-1">All {{ $taxonomyNamePlural }}</h1>
     <hr class="hr" />
     <div class="content">
       <ul>
-        {{- range $tag, $taxonomy := .Site.Taxonomies.tags }}
-        <li><a href="/tags/{{ $tag }}">{{ $tag }}</a></li>
+        {{- range $name, $term := .Data.Terms }}
+        <li>
+          <a href="/{{ $taxonomyNamePlural }}/{{ $name }}">{{ $name }}</a>
+        </li>
+        {{- end }}
+      </ul>
+      <h3 class="is-size-3">Other taxonomies</h3>
+      <ul>
+        {{- range $name, $taxonomy := .Site.Taxonomies }}
+        {{- if ne $name $.Data.Plural }}
+        <li>
+          <a href="/{{ $name }}">{{ $name }}</a>
+        </li>
+        {{- end }}
         {{- end }}
       </ul>
     </div>

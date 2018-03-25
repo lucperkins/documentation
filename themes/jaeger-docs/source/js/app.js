@@ -10,7 +10,7 @@ function addLinkAnchors() {
   anchors.options = {
     icon: '#'
   };
-  anchors.add('.content h2, .content h3, .content h4, .content h5, .content h6');
+  anchors.add('.content--docs h2, .content--docs h3, .content--docs h4, .content--docs h5, .content--docs h6');
 }
 
 function navbarToggle() {

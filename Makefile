@@ -39,7 +39,8 @@ develop-content: build-assets
 	ENV=dev $(HUGO) server \
         --buildDrafts \
         --buildFuture \
-        --disableFastRender
+        --disableFastRender \
+        --ignoreCache
 
 develop-assets:
 	(cd $(THEME_DIR) && $(GULP) dev)

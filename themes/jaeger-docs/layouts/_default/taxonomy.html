@@ -1,16 +1,25 @@
 {{ define "main" }}
-{{- $taxonomyName := .Data.Singular }}
-{{- $term := .Title }}
+{{- $taxonomyNameSingular := .Data.Singular }}
+{{- $taxonomyNamePlural := .Data.Plural }}
+{{- $term := .Data.Term }}
 <article class="article article--terms">
   <div class="container">
-    <h1 class="is-size-1">All pages with the {{ $taxonomyName }} <strong>{{ lower $term }}</strong></h1>
+    <h1 class="is-size-1">All pages with the {{ $taxonomyNameSingular }} <strong>{{ $term }}</strong></h1>
     <hr class="hr" />
     <div class="content">
       <ul>
         {{- range .Data.Pages }}
+        {{- .Render "li" }}
+        {{- end }}
+      </ul>
+      <h3 class="is-size-3">Other {{ $taxonomyNamePlural }}</h3>
+      <ul>
+        {{- range $name, $value := .Site.Taxonomies.tags }}
+        {{- if ne $name $term }}
         <li>
-          <a href="{{ .Permalink }}">{{ .Title }}</a>
-        </li>
+          <a href="/{{ $taxonomyNamePlural }}/{{ $name }}">{{ $name }}</a>
+          </li>
+        {{- end }}
         {{- end }}
       </ul>
     </div>
