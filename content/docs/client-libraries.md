@@ -3,9 +3,7 @@ title: Client libraries
 rank: 4
 ---
 
-## Introduction
-
-All Jaeger client libraries support the [OpenTracing standard](http://opentracing.io). The following resources provide more information about instrumenting your application with the OpenTracing APIs:
+All Jaeger client libraries support the [OpenTracing standard](http://opentracing.io). The following resources provide more information about instrumenting your application using the OpenTracing APIs:
 
 * [OpenTracing tutorials](https://github.com/yurishkuro/opentracing-tutorial) for Java, Go, Python, and Node.js
 * A deep dive blog post [Tracing HTTP request latency in Go][http-latency-medium]

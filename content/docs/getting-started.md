@@ -92,13 +92,14 @@ Then navigate to `http://localhost:8080`.
 #### Prerequisites
 
 -   You need Go 1.9 or higher installed on your machine.
--   Requires a [running Jaeger backend](#all-in-one-docker-image) to view the traces.
+-   Requires a [running Jaeger backend](#docker to view the traces.
 
 ## Client Libraries
 
 Look [here](../client-libraries).
 
 ## Running Individual Jaeger Components
+
 Individual Jaeger backend components can be run from source.
 They all have their `main.go` in the `cmd` folder. For example, to run the `jaeger-agent`:
 
