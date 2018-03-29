@@ -7,7 +7,19 @@ GULP         := $(NODE_BIN)/gulp
 CONCURRENTLY := $(NODE_BIN)/concurrently
 WRITE_GOOD   := $(NODE_BIN)/write-good
 
-macos-setup:
+# Verify proper Node version
+NODE_VERSION=$(shell node -v)
+ifeq ($(patsubst v8.%,v8,$(NODE_VERSION)), v8)
+	NODE_8=true
+else
+	NODE_8=false
+endif
+
+check-node-8:
+	@$(NODE_8) || echo Build requires Node 8.x
+	@$(NODE_8) && echo Building using Node 8.x
+
+macos-setup: check-node-8
 	brew switch hugo $(HUGO_VERSION) && brew link --overwrite hugo
 	npm install
 	(cd $(THEME_DIR) && npm install)
