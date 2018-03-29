@@ -8,7 +8,7 @@ rank: 2
 
 Your applications must be instrumented before they can send tracing data to Jaeger backend. Check the [Client Libraries](../client-libraries) section for information about how to use the OpenTracing API and how to initialize and configure Jaeger tracers.
 
-## All in one Docker image
+## All-in-one Docker image {#docker}
 
 This image, designed for quick local testing, launches the Jaeger UI, collector, query, and agent, with an in memory storage component.
 

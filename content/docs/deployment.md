@@ -3,7 +3,7 @@ title: Deployment
 rank: 6
 ---
 
-The main Jaeger backend components are released as Docker images on Docker Hub:
+The main Jaeger backend components are released as Docker images on [Docker Hub](https://hub.docker.com/r/jaegertracing):
 
 Component             | Repository
 --------------------- | ---
@@ -13,13 +13,12 @@ Component             | Repository
 
 There are orchestration templates for running Jaeger with:
 
-  * Kubernetes: [github.com/jaegertracing/jaeger-kubernetes](https://github.com/jaegertracing/jaeger-kubernetes),
-  * OpenShift: [github.com/jaegertracing/jaeger-openshift](https://github.com/jaegertracing/jaeger-openshift).
+* [Kubernetes]](https://github.com/jaegertracing/jaeger-kubernetes),
+* [OpenShift]](https://github.com/jaegertracing/jaeger-openshift).
 
 ## Agent
 
-Jaeger client libraries expect **jaeger-agent** process to run locally on each host.
-The agent exposes the following ports:
+Jaeger client libraries expect the **jaeger-agent** process to be running locally on each host. The Jaeger agent exposes the following ports:
 
 Port | Protocol | Function
 ---- | -------  | ---
