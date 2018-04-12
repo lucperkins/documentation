@@ -1,0 +1,7 @@
+{{- $jsFilename := index .Site.Data.assetHashes "app.js" }}
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/jquery-ui-1.9.1.custom.min.js"></script>
+<script type="text/javascript" src="/js/anchor.min.js"></script>
+<script type="text/javascript" src="/js/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+<script type="text/javascript" src="/js/{{ $jsFilename }}"></script>

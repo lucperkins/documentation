@@ -1,9 +1,9 @@
 ---
 title: Introduction
-rank: 1
+weight: 1
 ---
 
-Welcome to Jaeger's documentation portal! Below, you'll find information for both beginners and experienced Jaeger users.
+Welcome to Jaeger's documentation portal! Below you'll find information for both beginners and experienced Jaeger users.
 
 If you can't find what you are looking for or are curious about an issue not covered here, we'd love to hear from you either on [GitHub](https://github.com/jaegertracing/jaeger/issues), [Gitter chat](https://gitter.im/jaegertracing/Lobby), or our [mailing list](https://groups.google.com/forum/#!forum/jaeger-tracing).
 
@@ -21,19 +21,19 @@ Jaeger, inspired by [Dapper](https://research.google.com/pubs/pub36356.html) and
 
 ## Features
 
-  * [OpenTracing](http://opentracing.io/)-compatible data model and instrumentation libraries for the following languages/platforms:
-    * [Go](https://github.com/jaegertracing/jaeger-client-go)
-    * [Java](https://github.com/jaegertracing/jaeger-client-java)
-    * [Node.js](https://github.com/jaegertracing/jaeger-client-node)
-    * [Python](https://github.com/jaegertracing/jaeger-client-python)
-    * [C++](https://github.com/jaegertracing/cpp-client)
-  * Uses consistent upfront sampling with individual per-service/endpoint probabilities
-  * Multiple supported storage backends:
-    * [Cassandra](deployment/#cassandra)
-    * [Elasticsearch](deployment/#elasticsearch)
-    * Memory.
-  * Adaptive sampling (coming soon)
-  * Post-collection data processing pipeline (coming soon)
+* [OpenTracing](http://opentracing.io/)-compatible data model and instrumentation libraries for the following languages/platforms:
+  * [Go](https://github.com/jaegertracing/jaeger-client-go)
+  * [Java](https://github.com/jaegertracing/jaeger-client-java)
+  * [Node.js](https://github.com/jaegertracing/jaeger-client-node)
+  * [Python](https://github.com/jaegertracing/jaeger-client-python)
+  * [C++](https://github.com/jaegertracing/cpp-client)
+* Uses consistent upfront sampling with individual per-service/endpoint probabilities
+* Multiple supported storage backends:
+  * [Cassandra](deployment/#cassandra)
+  * [Elasticsearch](deployment/#elasticsearch)
+  * Memory.
+* Adaptive sampling (coming soon)
+* Post-collection data processing pipeline (coming soon)
 
 See the [Features](features) page for more details.
 

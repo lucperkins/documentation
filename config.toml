@@ -1,0 +1,24 @@
+baseURL            = "/"
+title              = "Jaeger: open source, end-to-end distributed tracing"
+languageCode       = "en"
+pygmentsCodeFences = true
+pygmentsUseClasses = true
+disableKinds       = ["taxonomy", "taxonomyTerm"]
+canonifyURLs       = true
+
+# Disable content taxonomies for now (until there is significantly more content)
+#[taxonomies]
+#  tag = "tags"
+
+[params]
+  tagline = "Monitor and troubleshoot transactions in complex distributed systems"
+  githubRepo     = "jaegertracing/jaeger"
+  twitterHandle  = "JaegerTracing"
+  mediumHandle   = "jaegertracing"
+  gitterHandle   = "jaegertracing"
+  openGraphImage = "img/jaeger-icon-color.png"
+
+  [navbar]
+    [[links]]
+      title = "Docs"
+      url = "/docs"

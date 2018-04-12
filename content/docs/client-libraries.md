@@ -1,6 +1,6 @@
 ---
 title: Client libraries
-rank: 4
+weight: 4
 ---
 
 All Jaeger client libraries support the [OpenTracing standard](http://opentracing.io). The following resources provide more information about instrumenting your application using the OpenTracing APIs:
@@ -8,25 +8,29 @@ All Jaeger client libraries support the [OpenTracing standard](http://opentracin
 * [OpenTracing tutorials](https://github.com/yurishkuro/opentracing-tutorial) for Java, Go, Python, and Node.js
 * A deep dive blog post [Tracing HTTP request latency in Go][http-latency-medium]
 * The official OpenTracing documentation and other materials at [opentracing.io](http://opentracing.io)
-* The `opentracing-contrib` [org on GitHub](https://github.com/opentracing-contrib) contains many repositories with off-the-shelf instrumentation for many popular frameworks, including JAXRS & Dropwizard (Java), Flask & Django (Python), Go std library, etc.
+* The [`opentracing-contrib` org on GitHub](https://github.com/opentracing-contrib) contains many repositories with off-the-shelf instrumentation for many popular frameworks, including:
+
+  * [JAX-RS](https://github.com/jax-rs) and [Dropwizard](http://dropwizard.io/) (Java)
+  * [Flask](http://flask.pocoo.org/) and [Django](https://www.djangoproject.com/) (Python)
+  * The [Go](https://golang.org/) standard library
 
 The rest of this page contains information about configuring and instantiating a Jaeger tracer in an application that is already instrumented with OpenTracing API.
 
 ## Terminology
 
-We use the term *client library*, *instrumentation library*, and *tracer* interchangeably in this document.
+We use the terms *client library*, *instrumentation library*, and *tracer* interchangeably in this document.
 
-## Official libraries
+## Supported libraries
 
-| Language | Library                                                      |
-| ---------|--------------------------------------------------------------|
-| go       | [jaeger-client-go](https://github.com/uber/jaeger-client-go)        |
-| java     | [jaeger-client-java](https://github.com/uber/jaeger-client-java)    |
-| node     | [jaeger-client-node](https://github.com/uber/jaeger-client-node)    |
-| python   | [jaeger-client-python](https://github.com/uber/jaeger-client-python)|
-| C++      | [cpp-client](https://github.com/jaegertracing/cpp-client)           |
+The following client libraries are officially supported:
+
+{{< clientsTable >}}
 
 Libraries in other languages are currently under development, please see [issue #366](https://github.com/jaegertracing/jaeger/issues/366).
+
+## Features
+
+A feature matrix for the existing client libraries is [available here](../client-features/).
 
 ## Initializing Jaeger Tracer
 
@@ -38,27 +42,11 @@ simpler parameterization of the Tracer, such as changing the default sampler or 
 
 ### Sampling
 
-Jaeger libraries implement consistent upfront (or head-based) sampling. For example, assume we have a simple call graph where service A calls service B, and B calls service C: `A -> B -> C`. When service A receives a request that contains no tracing information, Jaeger tracer will start a new trace, assign it a random trace ID, and make a sampling decision based on the currently installed sampling strategy. The sampling decision will be propagated with the requests to B and to C, so those services will not be making the sampling decision again but instead will respect the decision made by the top service A. This approach guarantees that if a trace is sampled, all its spans will be recorded in the backend. If each service was making its own sampling decision we would rarely get complete traces in the backend.
-
-When using configuration object to instantiate the tracer, the type of sampling can be selected via `sampler.type` and `sampler.param` properties. Jaeger libraries support the following samplers:
-
-* **Constant** (`sampler.type=const`) sampler always makes the same decision for all traces. It either samples all traces (`sampler.param=1`) or none of them (`sampler.param=0`).
-* **Probabilistic** (`sampler.type=probabilistic`) sampler makes a random sampling decision with the probability of sampling equal to the value of `sampler.param` property. For example, with `sampler.param=0.1` approximately 1 in 10 traces will be sampled.
-* **Rate Limiting** (`sampler.type=ratelimiting`) sampler uses a leaky bucket rate limiter to ensure that traces are sampled with a certain constant rate. For example, when `sampler.param=2.0` it will sample requests with the rate of 2 traces per second.
-* **Remote** (`sampler.type=remote`, which is also the default) sampler consults Jaeger agent for the appropriate sampling strategy to use in the current service. This allows controlling the sampling strategies in the services from a central configuration in Jaeger backend, or even dynamically (see [Adaptive Sampling](https://github.com/jaegertracing/jaeger/issues/365)).
-
-#### Adaptive Sampler
-
-Adaptive sampler is a composite sampler that combines two functions:
-
-  * It makes sampling decisions on a per-operation basis, i.e. based on span operation name. This is especially useful in the API services whose endpoints may have very different traffic volumes and using a single probabilistic sampler for the whole service might starve (never sample) some of the low QPS endpoints.
-  * It supports a minimum guaranteed rate of sampling, such as always allowing up to N traces per seconds and then sampling anything above that with a certain probability (everything is per-operation, not per-service).
-
-Per-operation parameters can be configured statically or pulled periodically from Jaeger backend with the help of Remote sampler. Adaptive sampler is designed to work with the upcoming [Adaptive Sampling](https://github.com/jaegertracing/jaeger/issues/365) feature of the Jaeger backend.
+See [here](../sampling#client-sampling-configuration).
 
 ### Reporters
 
-Jaeger tracers use **reporters** to process finished spans. Typically Jaeger libraries ship with the following reporters:
+Jaeger tracers use **reporters** to process finished {{< tip "spans" "span" >}}. Typically Jaeger libraries ship with the following reporters:
 
 * **NullReporter** does nothing with the span. It can be useful in unit tests.
 * **LoggingReporter** simply logs the fact that a span was finished, usually by printing the trace and span ID and the operation name.
@@ -67,7 +55,7 @@ Jaeger tracers use **reporters** to process finished spans. Typically Jaeger lib
 
 #### EMSGSIZE and UDP buffer limits
 
-By default Jaeger libraries use a UDP sender to report finished spans to `jaeger-agent` daemon.
+By default Jaeger libraries use a UDP sender to report finished {{< tip "spans" "span" >}} to the `jaeger-agent` daemon.
 The default max packet size is 65,000 bytes, which can be transmitted without segmentation when
 connecting to the agent via loopback interface. However, some OSs (in particular, MacOS), limit
 the max buffer size for UDP packets, as raised in [this GitHub issue](https://github.com/uber/jaeger-client-node/issues/124).
