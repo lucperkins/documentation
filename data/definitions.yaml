@@ -12,3 +12,5 @@ query: |
   **Query** is a service that retrieves traces from storage and hosts a UI to display them.
 directed-acyclic-graph:
   A **directed acyclic graph** (DAG) is a directed graph that contains no cycles
+baggage: |
+  Baggage items are key/value string pairs that apply to the given span, span context, and all spans that directly or transitively reference the local span.

@@ -57,8 +57,7 @@ develop-content: build-assets
 		--theme $(HUGO_THEME) \
         --buildDrafts \
         --buildFuture \
-        --disableFastRender \
-        --ignoreCache
+        --disableFastRender
 
 develop-assets:
 	(cd $(THEME_DIR) && $(GULP) dev)

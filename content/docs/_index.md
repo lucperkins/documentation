@@ -22,16 +22,13 @@ Jaeger, inspired by [Dapper](https://research.google.com/pubs/pub36356.html) and
 ## Features
 
 * [OpenTracing](http://opentracing.io/)-compatible data model and instrumentation libraries for the following languages/platforms:
-  * [Go](https://github.com/jaegertracing/jaeger-client-go)
-  * [Java](https://github.com/jaegertracing/jaeger-client-java)
-  * [Node.js](https://github.com/jaegertracing/jaeger-client-node)
-  * [Python](https://github.com/jaegertracing/jaeger-client-python)
-  * [C++](https://github.com/jaegertracing/cpp-client)
+  {{< clientsTable >}}
+
 * Uses consistent upfront sampling with individual per-service/endpoint probabilities
 * Multiple supported storage backends:
   * [Cassandra](deployment/#cassandra)
   * [Elasticsearch](deployment/#elasticsearch)
-  * Memory.
+  * Memory
 * Adaptive sampling (coming soon)
 * Post-collection data processing pipeline (coming soon)
 

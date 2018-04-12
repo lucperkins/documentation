@@ -27,8 +27,6 @@ Spans may be nested and ordered to model causal relationships. A [remote procedu
 
 ## Components
 
-![Architecture](/img/architecture.png)
-
 {{< figure src="/img/architecture.png" link="/img/architecture.png" caption="The basic architecture of a Jaeger installation" >}}
 
 This section details the core components of Jaeger and how they relate to one other. It's arranged by the order in which spans from your application interact with them.

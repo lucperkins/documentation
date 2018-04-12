@@ -5,7 +5,7 @@ weight: 4
 
 All Jaeger client libraries support the [OpenTracing standard](http://opentracing.io). The following resources provide more information about instrumenting your application using the OpenTracing APIs:
 
-* [OpenTracing tutorials](https://github.com/yurishkuro/opentracing-tutorial) for Java, Go, Python, and Node.js
+* [OpenTracing tutorials](https://github.com/yurishkuro/opentracing-tutorial) for [Java](https://github.com/yurishkuro/opentracing-tutorial/tree/master/java), [Go](https://github.com/yurishkuro/opentracing-tutorial/tree/master/go), [Python](https://github.com/yurishkuro/opentracing-tutorial/tree/master/python), and [Node.js](https://github.com/yurishkuro/opentracing-tutorial/tree/master/nodejs)
 * A deep dive blog post [Tracing HTTP request latency in Go][http-latency-medium]
 * The official OpenTracing documentation and other materials at [opentracing.io](http://opentracing.io)
 * The [`opentracing-contrib` org on GitHub](https://github.com/opentracing-contrib) contains many repositories with off-the-shelf instrumentation for many popular frameworks, including:
@@ -48,26 +48,22 @@ See [here](../sampling#client-sampling-configuration).
 
 Jaeger tracers use **reporters** to process finished {{< tip "spans" "span" >}}. Typically Jaeger libraries ship with the following reporters:
 
-* **NullReporter** does nothing with the span. It can be useful in unit tests.
-* **LoggingReporter** simply logs the fact that a span was finished, usually by printing the trace and span ID and the operation name.
-* **CompositeReporter** takes a list of other reporters and invokes them one by one.
-* **RemoteReporter** (default) buffers a certain number of finished spans in memory and uses a **sender** to submit a batch of spans out of process to Jaeger backend. The sender is responsible for serializing the span to the wire format (e.g. Thrift or JSON) and communicating with the backend components (e.g. over UDP or HTTP).
+Reporter | Description
+:--------|:-----------
+**NullReporter** | Does nothing with the span. This can be useful in unit tests.
+**LoggingReporter** | Simply logs the fact that a span was finished, usually by printing the trace and span ID and the operation name.
+**CompositeReporter** | Takes a list of other reporters and invokes them one by one.
+**RemoteReporter** (default) | Buffers a certain number of finished spans in memory and uses a **sender** to submit a batch of spans out of process to Jaeger backend. The sender is responsible for serializing the span to the wire format (e.g. Thrift or JSON) and communicating with the backend components (e.g. over UDP or HTTP).
 
 #### EMSGSIZE and UDP buffer limits
 
-By default Jaeger libraries use a UDP sender to report finished {{< tip "spans" "span" >}} to the `jaeger-agent` daemon.
-The default max packet size is 65,000 bytes, which can be transmitted without segmentation when
-connecting to the agent via loopback interface. However, some OSs (in particular, MacOS), limit
-the max buffer size for UDP packets, as raised in [this GitHub issue](https://github.com/uber/jaeger-client-node/issues/124).
-If you run into issue with `EMSGSIZE` errors, consider raising the limits in your kernel (see the issue for examples).
-You can also configure the client libraries to use a smaller max packet size, but that may cause
-issues if you have large spans, e.g. if you log big chunks of data. Spans that exceed max packet size
-are dropped by the clients (with metrics emitted to indicate that). Another alternative is
-to use non-UDP transports, such as [HttpSender in Java][HttpSender] (not currently available for all languages).
+By default, Jaeger libraries use a UDP sender to report finished {{< tip "spans" "span" >}} to the Jaeger {{< tip "agent" >}} daemon. The default max packet size is 65,000 bytes, which can be transmitted without segmentation when connecting to the agent via loopback interface. However, some OSs (in particular, macOS), limit the max buffer size for UDP packets, as raised in [this GitHub issue](https://github.com/uber/jaeger-client-node/issues/124). If you run into issues with `EMSGSIZE` errors, consider raising the limits in your kernel (see the issue for examples).
+
+You can also configure the client libraries to use a smaller max packet size, but that may cause issues if you have large spans, e.g. if you log big chunks of data. Spans that exceed max packet size are dropped by the clients (with metrics emitted to indicate that). Another alternative is to use non-UDP transports, such as [HttpSender in Java][HttpSender] (not currently available for all languages).
 
 ### Metrics
 
-Jaeger tracers emit various metrics about how many spans or traces they have started and finished, how many of them were sampled or not sampled, if there were any errors in decoding trace context from inbound requests or reporting spans to the backend.
+Jaeger tracers emit various metrics about how many {{< tip "spans" "span" >}} or {{< tip "traces" "trace" >}} they have started and finished, how many of them were sampled or not sampled, if there were any errors in decoding trace context from inbound requests or reporting spans to the backend, and so on.
 
 TODO standardize and describe the metric names and labels (issues [#572](https://github.com/jaegertracing/jaeger/issues/572), [#611](https://github.com/jaegertracing/jaeger/issues/611)).
 

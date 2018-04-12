@@ -10,9 +10,9 @@ Your applications must be instrumented before they can send tracing data to a Ja
 
 ## All-in-one Docker image {#docker}
 
-Jaeger provides an "all-in-one" Docker image, designed for quick local testing, that launches the Jaeger UI, [query](../architecture#agent), and [agent](../architecture#agent), along with an in-memory storage component.
+Jaeger provides an "all-in-one" Docker image, designed for quick local testing, that launches the Jaeger UI, {{< tip "query" >}}, and {{< tip "agent" >}}, along with an in-memory storage component.
 
-You can start the [`jaegertracing/all-in-one`](https://hub.docker.com/r/jaegertracing/all-in-one/) image using this single command:
+You can start the [`jaegertracing/all-in-one`](https://hub.docker.com/r/jaegertracing/all-in-one/) image using a single command:
 
 ```bash
 $ docker run -d -e \
@@ -67,35 +67,33 @@ $ go run ./main.go all
 
 Then navigate to `http://localhost:8080`.
 
-
 #### Features
 
--   Discover architecture of the whole system via data-driven dependency
-    diagram.
--   View request timeline and errors; understand how the app works.
--   Find sources of latency and lack of concurrency.
--   Highly contextualized logging.
--   Use baggage propagation to:
-
-    -   Diagnose inter-request contention (queueing).
-    -   Attribute time spent in a service.
-
--   Use open source libraries with OpenTracing integration to get
-    vendor-neutral instrumentation for free.
+* Discover architecture of the whole system via a data-driven dependency diagram.
+* View request timeline and errors to understand how the app works.
+* Find sources of latency and lack of concurrency.
+* Highly contextualized logging.
+* Use baggage propagation to:
+  * Diagnose inter-request contention (queueing).
+  * Attribute time spent in a service.
+* Use open source libraries with OpenTracing integration to get vendor-neutral instrumentation for free.
 
 #### Prerequisites
 
--   You need Go 1.9 or higher installed on your machine.
--   Requires a [running Jaeger backend](#docker) to view the {{< tip "traces" "trace" >}}.
+* You need [Go 1.9](https://golang.org/doc/install) or higher installed on your machine.
+* Requires a [running Jaeger backend](#docker) to view the {{< tip "traces" "trace" >}}.
 
-## Client Libraries
+## Client libraries
 
-Look [here](../client-libraries).
+Jaeger currently offers the following official client libraries:
 
-## Running Individual Jaeger Components
+{{< clientsTable >}}
 
-Individual Jaeger backend components can be run from source.
-They all have their `main.go` in the `cmd` folder. For example, to run the `jaeger-agent`:
+For more information see the [Client features](../client-features) and [Client libraries](../client-libraries) pages.
+
+## Running individual Jaeger components
+
+Individual Jaeger backend components can be run from source. Each component has a `main.go` file in the `cmd` folder. To run the `jaeger-agent`, for example:
 
 ```bash
 $ mkdir -p $GOPATH/src/github.com/jaegertracing
@@ -108,9 +106,8 @@ $ go run ./cmd/agent/main.go
 
 ## Migrating from Zipkin
 
-Collector service exposes Zipkin compatible REST API `/api/v1/spans` and `/api/v2/spans` for both
-JSON and thrift encoding.
-By default it's disabled. It can be enabled with `--collector.zipkin.http-port=9411`.
+The {{< tip "collector" >}} service exposes Zipkin-compatible REST API endpoints `/api/v1/spans` and `/api/v2/spans` for both JSON and Thrift encoding.
+By default this is disabled but can be enabled using the `--collector.zipkin.http-port=9411` flag.
 
-Zipkin Thrift IDL file can be found in [jaegertracing/jaeger-idl](https://github.com/jaegertracing/jaeger-idl/blob/master/thrift/zipkincore.thrift).
-It's compatible with [openzipkin/zipkin-api](https://github.com/openzipkin/zipkin-api/blob/master/thrift/zipkinCore.thrift)
+The Zipkin Thrift IDL file can be found in the [jaegertracing/jaeger-idl](https://github.com/jaegertracing/jaeger-idl/blob/master/thrift/zipkincore.thrift) repo.
+It's compatible with [openzipkin/zipkin-api](https://github.com/openzipkin/zipkin-api/blob/master/thrift/zipkinCore.thrift).
