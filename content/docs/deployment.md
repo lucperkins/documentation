@@ -13,8 +13,8 @@ Component             | Repository
 
 There are orchestration templates for running Jaeger with:
 
-* [Kubernetes]](https://github.com/jaegertracing/jaeger-kubernetes),
-* [OpenShift]](https://github.com/jaegertracing/jaeger-openshift).
+* [Kubernetes](https://github.com/jaegertracing/jaeger-kubernetes)
+* [OpenShift](https://github.com/jaegertracing/jaeger-openshift)
 
 ## Agent
 
@@ -64,7 +64,7 @@ across several collectors ([issue 213](https://github.com/jaegertracing/jaeger/i
 
 ## Collectors
 
-The collectors are stateless and thus many instances of **jaeger-collector** can be run in parallel.
+Jaeger {{< tip "collectors" "collector" >}} are stateless and thus many instances of **jaeger-collector** can be run in parallel.
 Collectors require almost no configuration, except for the location of Cassandra cluster,
 via `--cassandra.keyspace` and `--cassandra.servers` options, or the location of ElasticSearch cluster, via
 `--es.server-urls`, depending on which storage is specified. To see all command line options run
@@ -192,13 +192,13 @@ The base path can be configured via the `--query.base-path` command line paramet
 
 Several aspects of the UI can be configured:
 
-  * The Dependencies section can be enabled / configured
-  * Google Analytics tracking can be enabled / configured
-  * Additional menu options can be added to the global nav
+* The Dependencies section can be enabled/configured
+* Google Analytics tracking can be enabled/configured
+* Additional menu options can be added to the global nav
 
 These options can be configured by a JSON configuration file. The `--query.ui-config` command line parameter of the query service must then be set to the path to the JSON file when the query service is started.
 
-An example configuration file:
+Here's an example configuration file:
 
 ```json
 {
@@ -228,17 +228,15 @@ An example configuration file:
 }
 ```
 
-`dependencies.dagMaxNumServices` defines the maximum number of services allowed before the DAG dependency view is disabled. Default: `200`.
+Parameter | Description | Default
+:---------|:------------|:-------
+`dependencies.dagMaxNumServices` | Defines the maximum number of services allowed before the DAG dependency view is disabled | `200`
+`dependencies.menuEnabled` | Enables (`true`) or disables (`false`) the dependencies menu button | `true`
+`tracking.gaID` | Defines the Google Analytics tracking ID. This is required for Google Analytics tracking, and setting it to a non-`null` value enables Google Analytics tracking. | `null`
+`tracking.trackErrors` | Enables (`true`) or disables (`false`) error tracking via Google Analytics. Errors can only be tracked if a valid Google Analytics ID is provided. For additional details on error tracking via Google Analytics see the [tracking README](https://github.com/jaegertracing/jaeger-ui/blob/c622330546afc1be59a42f874bcc1c2fadf7e69a/src/utils/tracking/README.md) in the UI repo. | `true`
+`menu` | Allows additional links to be added to the global nav. The additional links are right-aligned. |
 
-`dependencies.menuEnabled` enables (`true`) or disables (`false`) the dependencies menu button. Default: `true`.
-
-`tracking.gaID` defines the Google Analytics tracking ID. This is required for Google Analytics tracking, and setting it to a non-`null` value enables Google Analytics tracking. Default: `null`.
-
-`tracking.trackErrors` enables (`true`) or disables (`false`) error tracking via Google Analytics. Errors can only be tracked if a valid Google Analytics ID is provided. For additional details on error tracking via Google Analytics see the [tracking README](https://github.com/jaegertracing/jaeger-ui/blob/c622330546afc1be59a42f874bcc1c2fadf7e69a/src/utils/tracking/README.md) in the UI repo. Default: `true`.
-
-`menu` allows additional links to be added to the global nav. The additional links are right-aligned.
-
-In the sample JSON config above, the configured menu will have a dropdown labeled "About Jaeger" with sub-options for "GitHub" and "Docs". The format for a link in the top right menu is as follows:
+In the sample JSON config above, the configured menu will have a dropdown labeled "About Jaeger" with sub-options for "GitHub" and "Docs." The format for a link in the top right menu is as follows:
 
 ```json
 {
@@ -252,7 +250,7 @@ Links can either be members of the `menu` Array, directly, or they can be groupe
 ```json
 {
   "label": "Dropdown button",
-  "items": [ ]
+  "items": []
 }
 ```
 
@@ -262,15 +260,10 @@ TODO: Swagger and GraphQL API ([issue 158](https://github.com/jaegertracing/jaeg
 
 ## Aggregation Jobs for Service Dependencies
 
-Production deployments need an external process which aggregates data and creates dependency links between services.
-Project [spark-dependencies](https://github.com/jaegertracing/spark-dependencies) is a Spark job which derives
-dependency links and stores them directly to the storage.
+Production deployments need an external process which aggregates data and creates dependency links between services. Project [spark-dependencies](https://github.com/jaegertracing/spark-dependencies) is a Spark job which derives dependency links and stores them directly to the storage.
 
 ## Configuration
 
-All binaries accepts command line properties and environmental variables which are managed by
-by [viper](https://github.com/spf13/viper) and [cobra](https://github.com/spf13/cobra).
-The names of environmental properties are capital letters and characters `-` and `.` are replaced with `_`.
-To list all configuration properties call `jaeger-binary -h`.
+All binaries accepts command-line properties and environment variables which are managed by by [viper](https://github.com/spf13/viper) and [cobra](https://github.com/spf13/cobra). The names of environmental properties are capital letters and characters `-` and `.` are replaced with `_`. To list all configuration properties, run `jaeger-binary -h`.
 
 [cqlsh]: http://cassandra.apache.org/doc/latest/tools/cqlsh.html
