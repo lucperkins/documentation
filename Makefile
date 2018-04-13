@@ -7,8 +7,9 @@ THEME_DIR    := themes/$(HUGO_THEME)
 GULP         := $(NODE_BIN)/gulp
 CONCURRENTLY := $(NODE_BIN)/concurrently
 WRITE_GOOD   := $(NODE_BIN)/write-good
+RAKE         := bundle exec rake
 NODE_VER     := $(shell node -v | cut -c2- | cut -c1)
-GOOD_NODE     := $(shell if [ $(NODE_VER) -ge 4 ]; then echo true; else echo false; fi)
+GOOD_NODE    := $(shell if [ $(NODE_VER) -ge 4 ]; then echo true; else echo false; fi)
 
 macos-setup: check-node
 	scripts/install-hugo.sh $(HUGO_VERSION) macOS
@@ -71,9 +72,7 @@ htmlproofer-setup:
 		--path vendor/bundle
 
 htmlproofer: build
-	$(HTMLPROOFER) \
-        --empty-alt-ignore \
-        public
+	$(RAKE) html_proofer
 
 write-good:
 	$(WRITE_GOOD) content/**/*.md
