@@ -1,6 +1,10 @@
 <header>
   <h1 class="title is-size-1{{ if .Params.description }} is-spaced{{ end }}">{{ .Title }}</h1>
   {{- with .Params.description }}<h4 class="subtitle is-size-4">{{ . }}</h4>{{ end }}
+  {{- if .Params.versions }}
+  {{- $version := index .Site.Data.versions (lower .Title) }}
+  <h5>Supported versions: <strong>{{ $version }}</strong></h5>
+  {{- end }}
   <!--
   {{- with .Params.tags }}
   <div class="tags">

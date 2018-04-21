@@ -9,9 +9,10 @@
   {{- end }}
 </aside>
 -->
+{{- $menuPages := .Site.Menus.docs }}
 {{- $currentPage := . -}}
 <aside class="nav">
-  {{- range .Site.Menus.docs -}}
+  {{- range $menuPages -}}
   {{- $isCurrentPage := eq $currentPage.Title .Title }}
   {{- $title := cond (isset .Page.Params "navtitle") (index .Page.Params "navtitle") .Title }}
   <h4 class="nav-link is-size-4{{ if $isCurrentPage }} is-active{{ end }}">
