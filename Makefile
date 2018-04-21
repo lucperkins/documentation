@@ -69,7 +69,7 @@ htmlproofer-setup:
 	NOKOGIRI_USE_SYSTEM_LIBRARIES=true bundle install \
 		--path vendor/bundle
 
-htmlproofer: build
+htmlproofer: build-preview
 	$(HTMLPROOFER) \
         --empty-alt-ignore \
         public
