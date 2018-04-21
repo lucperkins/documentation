@@ -19,20 +19,20 @@ There are orchestration templates for running Jaeger with:
 
 ## Agent
 
-Jaeger client libraries expect the **jaeger-agent** process to be running locally on each host. The Jaeger agent exposes the following ports:
+Jaeger client libraries expect the **jaeger-agent** process to be running locally on each host. The Jaeger {{< tip "agent" >}}  exposes the following ports:
 
 Port | Protocol | Function
----- | -------  | ---
-5775 | UDP      | accept zipkin.thrift over compact thrift protocol
-6831 | UDP      | accept jaeger.thrift over compact thrift protocol
-6832 | UDP      | accept jaeger.thrift over binary thrift protocol
-5778 | HTTP     | serve configs, sampling strategies
+:----|:---------|:--------
+5775 | UDP      | Accepts `zipkin.thrift` over the compact Thrift protocol
+6831 | UDP      | Accepts `jaeger.thrift` over the compact thrift protocol
+6832 | UDP      | Accepts `jaeger.thrift` over the binary Thrift protocol
+5778 | HTTP     | Serves configs and sampling strategies
 
-It can be executed directly on the host or via Docker, as follows:
+The {{< tip "agent" >}} can be executed directly on the host or via Docker, as follows:
 
 ```bash
 ## make sure to expose only the ports you use in your deployment scenario!
-docker run \
+$ docker run \
   --rm \
   -p5775:5775/udp \
   -p6831:6831/udp \
@@ -43,14 +43,12 @@ docker run \
 
 ### Discovery System Integration
 
-The agents can connect point to point to a single collector address, which could be
-load balanced by another infrastructure component (e.g. DNS) across multiple collectors.
-The agent can also be configured with a static list of collector addresses.
+The agents can connect point to point to a single {{< tip "collector" >}} address, which can be load balanced by another infrastructure component (e.g. DNS) across multiple collectors. The agent can also be configured with a static list of collector addresses.
 
-On Docker, a command like the following can be used:
+In Docker, a command like the following can be used:
 
 ```bash
-docker run \
+$ docker run \
   --rm \
   -p5775:5775/udp \
   -p6831:6831/udp \
@@ -60,44 +58,40 @@ docker run \
   /go/bin/agent-linux --collector.host-port=jaeger-collector.jaeger-infra.svc:14267
 ```
 
-In the future we will support different service discovery systems to dynamically load balance
-across several collectors ([issue 213](https://github.com/jaegertracing/jaeger/issues/213)).
+In the future, we'll support different service discovery systems to dynamically load balance across several collectors (see [issue 213](https://github.com/jaegertracing/jaeger/issues/213)).
 
 ## Collectors
 
-Jaeger {{< tip "collectors" "collector" >}} are stateless and thus many instances of **jaeger-collector** can be run in parallel.
-Collectors require almost no configuration, except for the location of Cassandra cluster,
-via `--cassandra.keyspace` and `--cassandra.servers` options, or the location of ElasticSearch cluster, via
-`--es.server-urls`, depending on which storage is specified. To see all command line options run
+Jaeger {{< tip "collectors" "collector" >}} are stateless and thus many instances of **jaeger-collector** can be run in parallel. Collectors require almost no configuration, except for the location of the Cassandra cluster via the `--cassandra.keyspace` and `--cassandra.servers` options, or the location of the Elasticsearch cluster via `--es.server-urls`, depending on which storage is specified. To see all command-line options, run:
 
-```
-go run ./cmd/collector/main.go -h
+```bash
+$ go run ./cmd/collector/main.go -h
 ```
 
-or, if you don't have the source code
+Or, if you don't have the source code:
 
-```
-docker run -it --rm jaegertracing/jaeger-collector /go/bin/collector-linux -h
+```bash
+$ docker run -it --rm jaegertracing/jaeger-collector /go/bin/collector-linux -h
 ```
 
-At default settings the collector exposes the following ports:
+When using the default settings, the collector exposes the following ports:
 
 Port  | Protocol | Function
------ | -------  | ---
-14267 | TChannel | used by **jaeger-agent** to send spans in jaeger.thrift format
-14268 | HTTP     | can accept spans directly from clients in jaeger.thrift format
-9411  | HTTP     | can accept Zipkin spans in JSON or Thrift (disabled by default)
+:-----|:---------|:--------
+14267 | TChannel | Used by **jaeger-agent** to send spans in `jaeger.thrift` format
+14268 | HTTP     | Can accept spans directly from clients in `jaeger.thrift` format
+9411  | HTTP     | Can accept Zipkin spans in JSON or Thrift (disabled by default)
 
 
 ## Storage Backend
 
 Collectors require a persistent storage backend. Cassandra and ElasticSearch are the primary supported storage backends. Additional backends are [discussed here](https://github.com/jaegertracing/jaeger/issues/638).
 
-The storage type can be passed via `SPAN_STORAGE_TYPE` environment variable. Valid values are `cassandra`, `elasticsearch`, and `memory` (only for all-in-one binary).
+The storage type can be passed via the `SPAN_STORAGE_TYPE` environment variable. Valid values are `cassandra`, `elasticsearch`, and `memory` (the memory backend can only be used if you're running an all-in-one binary).
 
 ### Cassandra
 
-Supported versions: 3.4+
+Supported versions: **{{< version "cassandra" >}}**
 
 Deploying Cassandra itself is out of scope for our documentation. One good
 source of documentation is the [Apache Cassandra Docs](https://cassandra.apache.org/doc/latest/).
@@ -123,8 +117,8 @@ Jaeger supports TLS client to node connections as long as you've configured
 your Cassandra cluster correctly. After verifying with e.g. `cqlsh`, you can
 configure the collector and query like so:
 
-```
-docker run \
+```bash
+$ docker run \
   -e CASSANDRA_SERVERS=<...> \
   -e CASSAMDRA_TLS=true \
   -e CASSANDRA_TLS_SERVER_NAME="CN-in-certificate" \
@@ -137,7 +131,7 @@ docker run \
 The schema tool also supports TLS. You need to make a custom cqlshrc file like
 so:
 
-```
+```conf
 # Creating schema in a cassandra cluster requiring client TLS certificates.
 #
 # Create a volume for the schema docker container containing four files:
@@ -160,7 +154,7 @@ usercert = ~/.cassandra/client-cert
 
 ### ElasticSearch
 
-Supported versions: 5.x, 6.x
+Supported versions: **{{< version "elasticsearch" >}}**
 
 ElasticSearch does not require initialization other than
 [installing and running ElasticSearch](https://www.elastic.co/downloads/elasticsearch).

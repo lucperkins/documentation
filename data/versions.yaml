@@ -1,0 +1,3 @@
+cassandra: 3.4+
+elasticsearch: 5.x/6.x
+go: 1.9

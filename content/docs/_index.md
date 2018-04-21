@@ -37,11 +37,11 @@ See the [Features](features) page for more details.
 
 ## Technical specs
 
-  * Backend components implemented in [Go 1.9](https://golang.org/doc/go1.9)
+  * Backend components implemented in [Go {{< version "go" >}}](https://golang.org/doc/go{{< version "go" >}})
   * [React](https://reactjs.org/)-based UI
   * Supported storage backends:
-    * [Cassandra 3.4+](deployment/#cassandra)
-    * [ElasticSearch 5.x, 6.x](deployment/#elasticsearch)
+    * [Cassandra {{< version "cassandra" >}}](deployment/#cassandra)
+    * [Elasticsearch {{< version "elasticsearch" >}}](deployment/#elasticsearch)
     * Memory storage
 
 ## Quick start

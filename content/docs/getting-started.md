@@ -81,7 +81,7 @@ Then navigate to `http://localhost:8080`.
 
 #### Prerequisites
 
-* You need [Go 1.9](https://golang.org/doc/install) or higher installed on your machine.
+* You need [Go {{< version "go" >}}](https://golang.org/doc/install) or higher installed on your machine.
 * Requires a [running Jaeger backend](#docker) to view the {{< tip "traces" "trace" >}}.
 
 ## Client libraries
