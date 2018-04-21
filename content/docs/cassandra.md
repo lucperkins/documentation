@@ -3,29 +3,25 @@ title: Cassandra
 versions: true
 ---
 
-Deploying Cassandra itself is out of scope for our documentation. One good
-source of documentation is the [Apache Cassandra Docs](https://cassandra.apache.org/doc/latest/).
+Deploying Cassandra itself is out of scope for our documentation. One good source of documentation is the [Apache Cassandra docs](https://cassandra.apache.org/doc/latest/).
 
 #### Schema script
 
-A script is provided to initialize Cassandra keyspace and schema
-using Cassandra's interactive shell [`cqlsh`][cqlsh]:
+A script is provided to initialize the Cassandra keyspace and schema using Cassandra's interactive shell, [`cqlsh`](http://cassandra.apache.org/doc/latest/tools/cqlsh.html):
 
 ```sh
 MODE=test sh ./plugin/storage/cassandra/schema/create.sh | cqlsh
 ```
 
 For production deployment, pass `MODE=prod DATACENTER={datacenter}` arguments to the script,
-where `{datacenter}` is the name used in the Cassandra configuration / network topology.
+where `{datacenter}` is the name used in the Cassandra configuration/network topology.
 
 The script also allows overriding TTL, keyspace name, replication factor, etc.
 Run the script without arguments to see the full list of recognized parameters.
 
 #### TLS support
 
-Jaeger supports TLS client to node connections as long as you've configured
-your Cassandra cluster correctly. After verifying with e.g. `cqlsh`, you can
-configure the collector and query like so:
+Jaeger supports TLS client-to-node connections provided that you've configured your Cassandra cluster correctly. After verifying this, for example with `cqlsh`, you can configure the {{< tip "collector" >}} and {{< tip "query" >}} like so:
 
 ```bash
 $ docker run \
@@ -38,10 +34,9 @@ $ docker run \
   jaegertracing/jaeger-collector
 ```
 
-The schema tool also supports TLS. You need to make a custom cqlshrc file like
-so:
+The schema tool also supports TLS. To use TLS, you'll need to make a custom `cqlshrc` file that looks something like this:
 
-```conf
+```ini
 # Creating schema in a cassandra cluster requiring client TLS certificates.
 #
 # Create a volume for the schema docker container containing four files:

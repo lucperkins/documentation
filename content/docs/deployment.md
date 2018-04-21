@@ -194,5 +194,3 @@ Production deployments need an external process which aggregates data and create
 ## Configuration
 
 All binaries accepts command-line properties and environment variables which are managed by by [viper](https://github.com/spf13/viper) and [cobra](https://github.com/spf13/cobra). The names of environmental properties are capital letters and characters `-` and `.` are replaced with `_`. To list all configuration properties, run `jaeger-binary -h`.
-
-[cqlsh]: http://cassandra.apache.org/doc/latest/tools/cqlsh.html
