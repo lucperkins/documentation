@@ -1,6 +1,7 @@
 ---
 title: Introduction
 weight: 1
+menu: docs
 ---
 
 Welcome to Jaeger's documentation portal! Below you'll find information for both beginners and experienced Jaeger users.
