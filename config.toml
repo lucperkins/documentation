@@ -20,6 +20,7 @@ theme              = "jaeger-docs"
   openGraphImage = "img/jaeger-icon-color.png"
   newsletterTitle = "June 2018 project update"
   newsletterURL   = "https://medium.com/jaegertracing/june-2018-newsletter-429ee7c5f4b"
+  mediumApiUrl    = "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/jaegertracing"
 
   [navbar]
     [[links]]

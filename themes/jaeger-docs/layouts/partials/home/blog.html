@@ -1,0 +1,31 @@
+{{- $mediumApiUrl := .Site.Params.mediumApiUrl }}
+{{- $blogPosts := index (getJSON $mediumApiUrl) "items" }}
+<section class="section section--blog is-info">
+  {{- range $blogPosts }}
+  {{- $title := index . "title" }}
+  {{- $author := index . "author" }}
+  {{- $imgUrl := index . "thumbnail" }}
+  {{- $description := index . "description" }}
+  <div class="card">
+    <div class="card-image">
+      <figure>
+        <img src="{{ $imgUrl }}" width="100" height="100">
+      </figure>
+    </div>
+    <div class="card-content">
+      <div class="media">
+        <div class="media-left">
+          <div class="media-content">
+            <p class="title is-4">
+              {{ $title }}
+            </p>
+            <p class="subtitle is-5">
+              {{ $description | safeHTML }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{- end }}
+</section>
