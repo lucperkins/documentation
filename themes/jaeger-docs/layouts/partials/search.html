@@ -16,7 +16,7 @@
   // How each document is indexed
   const docIndex = function() {
     this.ref('url');
-    this.field('title', {boost: 10});
+    this.field('title', {boost: 100});
     this.field('body');
     this.field('summary', {boost: 5});
 
